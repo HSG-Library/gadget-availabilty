@@ -1,0 +1,18 @@
+micronaut:
+  server:
+    port: 8080
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: "/assets/**"
+        paths: "classpath:views/assets"
+
+alma-api:
+  url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
+  mmsId: 994889360105506
+  holdingId: ALL
+  page-size: 100
+
+gadget-availability:
+  image-ext: .png  

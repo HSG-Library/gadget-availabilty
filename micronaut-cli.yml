@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: ch.unisg.biblio.systemlibrarian
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [annotation-api, app-name, http-client, java, java-application, jetty-server, junit, logback, maven, readme, shade]

@@ -1,0 +1,285 @@
+
+/* 
+    Created on : 19.03.2018, 15:46:22
+    Author     : Kathrin Heim
+*/
+body {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    width: auto;
+    margin: auto;
+}
+
+header {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 2em;
+    overflow-wrap: break-word;
+}
+
+.logo, h1, pre {
+   text-align: left;
+   margin: 10px;
+}
+
+nav, #loading, #search, footer {
+    margin: 10px;
+}
+
+#loading {
+    text-align: center;
+    font-weight: bold;
+}
+
+#navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkgray;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+#navi li {
+    float: left;
+    border-right: 1px solid white;
+}
+
+#navi li:last-child {
+    border-right: none;
+}
+
+#navi li a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    font-size: 30px;
+    height: 30px;
+    color: #fff;
+}
+
+#navi li a:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+#navi li a.reload {
+    line-height: 30px;
+}
+
+#navi li a.info {
+    line-height: 37px;
+}
+
+footer {
+    clear: both;
+}
+
+a:link, a:visited, a:active {
+    color: darkgreen;
+}
+
+ a:hover {
+    color: limegreen;
+}
+
+input {
+    padding: 8px;
+    height: 30px;
+    width: 260px;
+/*    text-align: center;*/
+    font-weight: bold;
+    font-size: large;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+
+}
+
+#items {
+/*    visibility: hidden;*/
+    
+}
+
+.photo {
+/*    display:inline;*/
+
+}
+
+.green_tile {
+    border: 20px solid darkgreen;
+
+}
+
+.red_tile {
+    border: 20px solid darkred;
+}
+
+.tile {
+    background-color: lightgrey;    
+    padding: 10px;
+    margin: 10px;
+    float:left;
+    width: 220px;
+    max-height: 260px;
+    overflow: hidden;
+}
+
+.allgone {
+    color: darkred;
+}
+
+p {
+/*    word-wrap: break-word;*/
+}
+
+.title, .availability {
+    font-weight: bold;
+}
+
+.title {
+    display: block;
+}
+
+.availability {
+    position: relative;
+/*    top: -80px; covers important part of pictures*/
+    top: -195px;
+    left: 140px;
+    background-color: whitesmoke;
+    color: darkgreen;
+    border: 1px solid darkgray;
+    padding: 8px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+.note {
+    font-size: small;
+    visibility:hidden;
+}
+
+#info {
+    margin: 10px;
+    background-color: lightgray;
+    padding: 20px;
+    word-wrap: break-word;
+}
+
+.jq-icon-info {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-size: 1em;
+}
+
+.jq-toast-wrap {
+    width: 150px;
+}
+
+
+@media
+
+only screen and ( min-resolution: 200dpi)
+
+{
+	/* Resolution-specific CSS for HD & Retina displays*/
+        
+        header {
+            font-size: 3em;
+        }
+        
+        .tile {
+            width: 85%;
+            max-height:fit-content;
+            font-size: 2.5em;
+            
+        }
+        
+        .tile img {
+            width: 100%;
+
+        }
+        
+        .green_tile {
+            border: 40px solid darkgreen;
+
+        }
+
+        .red_tile {
+            border: 40px solid darkred;
+        }
+        
+        .jq-icon-info {
+            font-size: 2.5em;
+            line-height: 2em;
+        }
+        
+        .jq-toast-wrap {
+            width: 80%;
+            height: auto;
+        }
+        
+        input {
+
+            height: 60px;
+            width: 95%;
+            font-size: 2.5em;
+
+        }
+        
+        .logo img {
+
+            width: 50%
+
+         }
+        
+        #navi img {
+            width: 80%;
+            padding-left: 10px;
+
+        }
+        
+        
+        #navi {
+            width: 15%;
+
+        }
+        
+        #navi li {
+            float:none;
+ 
+        }
+}
+
+/* Loader from: https://loading.io/css/ */
+.lading-animation {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lading-animation div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #00802f;
+  border-radius: 50%;
+  animation: lading-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #00802f transparent transparent transparent;
+}
+.lading-animation div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lading-animation div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lading-animation div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lading-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
