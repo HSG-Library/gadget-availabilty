@@ -50,4 +50,4 @@ jobs:
           app-name: 'kleinmaterialien'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9447E432022F4ABF820D0D918C81C77D }}
-          package: '*.jar'
+          package: 'gadget-availabilty-*.jar'
