@@ -49,5 +49,5 @@ jobs:
       with:
         app-name: 'p-web-hsg-01'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d5883e4281b84bd9848ae000b45a0640 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_1f2b2b7b93e5479386f22521e6abd082 }}
         package: '*.jar'
