@@ -11,7 +11,7 @@ micronaut:
 alma-api:
   url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
   mmsId: 994889360105506
-  holdingId: ALL
+  holdingId: 2236603930005506
   page-size: 100
 
 gadget-availability:
