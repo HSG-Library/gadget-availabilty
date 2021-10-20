@@ -10,6 +10,7 @@ public class GadgetItem {
 	private String imgId;
 	private String note;
 	private String volume;
+	private String description;
 
 	public GadgetItem(
 			int total,
@@ -17,13 +18,15 @@ public class GadgetItem {
 			String callno,
 			String imgId,
 			String note,
-			String volume) {
+			String volume,
+			String description) {
 		this.total = total;
 		this.available = available;
 		this.callno = callno;
 		this.imgId = imgId;
 		this.note = note;
 		this.volume = volume;
+		this.description = description;
 	}
 
 	public int getTotal() {
@@ -56,5 +59,9 @@ public class GadgetItem {
 
 	public String getVolume() {
 		return this.volume;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 }
