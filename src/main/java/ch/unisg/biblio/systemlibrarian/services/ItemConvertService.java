@@ -1,5 +1,6 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,13 @@ public class ItemConvertService {
 						return currentItem;
 					});
 				});
-		return List.copyOf(groupedItems.values());
+
+		List<GadgetItem> gadgetItems = new ArrayList<>(groupedItems.values());
+		gadgetItems.sort((o1, o2) -> {
+			return o1.getDescription().compareTo(o2.getDescription());
+		});
+
+		return List.copyOf(gadgetItems);
 	}
 
 	private GadgetItem createGadgetItem(AlmaItemData itemData) {
@@ -41,7 +48,8 @@ public class ItemConvertService {
 				convertName(itemData),
 				convertImgId(itemData),
 				StringUtils.defaultIfBlank(itemData.getPublicNote(), "-"),
-				StringUtils.defaultString(itemData.getEnumerationA()));
+				StringUtils.defaultString(itemData.getEnumerationA()),
+				StringUtils.defaultString(itemData.getDescription()));
 	}
 
 	private String convertName(AlmaItemData itemData) {
