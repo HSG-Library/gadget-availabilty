@@ -30,14 +30,14 @@ public class ErrorController {
 	@Error(status = HttpStatus.NOT_FOUND, global = true)
 	public MutableHttpResponse<Writable> error404(HttpRequest<?> request) {
 		LOG.info("404 status at: '{}'", request.getUri());
-		return HttpResponse.notFound(viewsRenderer.render("error/404", Map.of()))
+		return HttpResponse.notFound(viewsRenderer.render("error/404", Map.of(), request))
 				.contentType(MediaType.TEXT_HTML);
 	}
 
 	@Error(global = true)
 	public MutableHttpResponse<Writable> error500(HttpRequest<?> request, Throwable e) {
 		LOG.error("An error occured: '{}'", request.getUri(), e);
-		return HttpResponse.serverError(viewsRenderer.render("error/500", Map.of("msg", e.getClass().getSimpleName())))
+		return HttpResponse.serverError(viewsRenderer.render("error/500", Map.of("msg", e.getClass().getSimpleName()), request))
 				.contentType(MediaType.TEXT_HTML);
 	}
 }
