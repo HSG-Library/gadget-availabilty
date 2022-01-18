@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
@@ -25,12 +24,14 @@ public class ItemConvertService {
 		items.stream()
 				.map(AlmaItem::getItemData)
 				.forEach(itemData -> {
-					groupedItems.putIfAbsent(itemData.getEnumerationA(), createGadgetItem(itemData));
+					// if an item with the same enum A is in the map increment total and avail count
 					groupedItems.computeIfPresent(itemData.getEnumerationA(), (key, currentItem) -> {
 						currentItem.incrementTotal();
 						currentItem.addToAvailable(itemData.getBaseStatus().getValue());
 						return currentItem;
 					});
+					// if an item is not in the map, add it with total 1 and avail status
+					groupedItems.putIfAbsent(itemData.getEnumerationA(), createGadgetItem(itemData)); 
 				});
 
 		List<GadgetItem> gadgetItems = new ArrayList<>(groupedItems.values());

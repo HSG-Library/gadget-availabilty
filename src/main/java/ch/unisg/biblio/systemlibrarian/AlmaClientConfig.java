@@ -1,7 +1,5 @@
 package ch.unisg.biblio.systemlibrarian;
 
-import javax.annotation.PostConstruct;
-
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.context.annotation.Requires;
 
@@ -13,11 +11,6 @@ public class AlmaClientConfig {
 	private String mmsId;
 	private String holdingId;
 	private String apiKey;
-
-	@PostConstruct
-	public void init() {
-		this.apiKey = System.getProperty("apiKey");
-	}
 
 	public String getMmsId() {
 		return mmsId;
