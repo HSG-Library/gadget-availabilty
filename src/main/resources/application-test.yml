@@ -1,0 +1,9 @@
+alma-api:
+  apiKey: no-key-needed-for-testing
+
+HMAC:
+  secret: 123456
+
+mockito:
+  test:
+    enabled  

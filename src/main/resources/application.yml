@@ -16,3 +16,7 @@ alma-api:
 
 gadget-availability:
   image-ext: .png  
+
+HMAC:
+  algorithm: HmacSHA256
+  #secret: <provide via commandline on prod '-DHMAC.secret=123456'>

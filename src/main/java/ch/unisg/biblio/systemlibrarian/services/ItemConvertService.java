@@ -1,6 +1,5 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,12 +33,7 @@ public class ItemConvertService {
 					groupedItems.putIfAbsent(itemData.getEnumerationA(), createGadgetItem(itemData)); 
 				});
 
-		List<GadgetItem> gadgetItems = new ArrayList<>(groupedItems.values());
-		gadgetItems.sort((o1, o2) -> {
-			return o1.getDescription().compareTo(o2.getDescription());
-		});
-
-		return List.copyOf(gadgetItems);
+		return List.copyOf(groupedItems.values());
 	}
 
 	private GadgetItem createGadgetItem(AlmaItemData itemData) {
