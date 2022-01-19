@@ -39,7 +39,12 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 		initGadgets();
 	}
 
-	@Scheduled(cron = "0 30 4 1/1 * ?")
+	/**
+	 * Re-initialize gadgets (call Alma API).
+	 * 
+	 * Scheduled every 30min from 07:00 to * 21:00.
+	 */
+	@Scheduled(cron = "0 */30 7-21 * * *")
 	public void reInitGadgets() {
 		LOG.info("Scheduled: call initGadgets()");
 		initGadgets();
