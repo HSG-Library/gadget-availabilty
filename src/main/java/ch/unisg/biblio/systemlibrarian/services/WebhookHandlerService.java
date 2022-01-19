@@ -24,7 +24,7 @@ import jakarta.inject.Singleton;
 @Requires(property = "HMAC")
 @Singleton
 public class WebhookHandlerService {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	private static final String LOAN_ACTION = "LOAN";
@@ -59,14 +59,15 @@ public class WebhookHandlerService {
 	public HttpResponse<String> processWebhook(String body, String signature) {
 		boolean webhookValid = checkHMAC(body, signature);
 		if (!webhookValid) {
-			LOG.warn("The recieved webhook was not correctly signed");
+			LOG.warn("The recieved webhook was not correctly signed ('{}')", signature);
 			return HttpResponse.badRequest();
 		}
 		Optional<AlmaWebhookLoanItem> item = convert(body);
 		if (item.isEmpty()) {
+			LOG.warn("The recieved webhook could not be transformed into an item ('{}')", signature);
 			return HttpResponse.badRequest("No Item");
 		}
-		item.filter(this::filterWebhook)
+		item.filter(i -> filterWebhook(i, signature))
 				.ifPresent(i -> {
 					boolean available;
 					if (EVENT_LOAN_CREATED.equals(i.getEvent().getValue())) {
@@ -86,7 +87,7 @@ public class WebhookHandlerService {
 		try {
 			return hmacService.checkSignature(algorithm, body, secret, signature);
 		} catch (InvalidKeyException | NoSuchAlgorithmException e) {
-			LOG.error("Could not validate webhook, checking the signature failed", e);
+			LOG.error("Could not validate webhook ('{}'), checking the signature failed", signature, e);
 			return false;
 		}
 	}
@@ -102,8 +103,10 @@ public class WebhookHandlerService {
 		}
 	}
 
-	protected boolean filterWebhook(AlmaWebhookLoanItem item) {
-		return isLoanAction(item) && isCorectMmsId(item) && isCorrectHoldingId(item);
+	protected boolean filterWebhook(AlmaWebhookLoanItem item, String signature) {
+		boolean isGadgetWebhook = isLoanAction(item) && isCorectMmsId(item) && isCorrectHoldingId(item);
+		LOG.info("Filter webhook ('{}'): isGadgetWebhook: '{}'", signature, isGadgetWebhook);
+		return isGadgetWebhook;
 	}
 
 	private boolean isLoanAction(AlmaWebhookLoanItem item) {

@@ -42,7 +42,7 @@ public class AlmaWebhookController {
 
 	@Post("/webhook")
 	public HttpResponse<String> webhook(HttpRequest<String> request, @Header("X-Exl-Signature") String signature) {
-		LOG.info("Webhook recieved");
+		LOG.info("Webhook recieved ('{}')", signature);
 		String body = request.getBody().orElse("empty");
 		LOG.trace("Signature: '{}' Body: '{}'", signature, body);
 		return webhookHandlerService.processWebhook(body, signature);
