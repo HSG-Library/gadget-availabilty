@@ -37,12 +37,12 @@ public class WebhookHandlerService {
 
 	private HMACService hmacService;
 	private AlmaClientConfig almaClientConfig;
-	private GatgetProviderService gadgetProviderService;
+	private GadgetProviderService gadgetProviderService;
 
 	@Inject
 	public WebhookHandlerService(HMACService hmacService,
 			AlmaClientConfig config,
-			GatgetProviderService gadgetProviderService) {
+			GadgetProviderService gadgetProviderService) {
 		this.hmacService = hmacService;
 		this.almaClientConfig = config;
 		this.gadgetProviderService = gadgetProviderService;

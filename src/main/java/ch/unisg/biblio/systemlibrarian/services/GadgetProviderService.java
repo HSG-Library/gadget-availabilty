@@ -19,7 +19,7 @@ import io.micronaut.scheduling.annotation.Scheduled;
 import jakarta.inject.Singleton;
 
 @Singleton
-public class GatgetProviderService implements ApplicationEventListener<ServerStartupEvent> {
+public class GadgetProviderService implements ApplicationEventListener<ServerStartupEvent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
@@ -28,7 +28,7 @@ public class GatgetProviderService implements ApplicationEventListener<ServerSta
 	private ItemFetchService itemFetchService;
 	private ItemConvertService itemConvertService;
 
-	public GatgetProviderService(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
+	public GadgetProviderService(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
 		this.itemFetchService = itemFetchService;
 		this.itemConvertService = itemConvertService;
 	}
@@ -45,7 +45,7 @@ public class GatgetProviderService implements ApplicationEventListener<ServerSta
 		initGadgets();
 	}
 
-	public void initGadgets() {
+	public int initGadgets() {
 		LOG.info("Initialize Gadgets");
 		List<AlmaItem> almaItems = itemFetchService.fetchAll();
 		this.items = almaItems.stream()
@@ -54,9 +54,14 @@ public class GatgetProviderService implements ApplicationEventListener<ServerSta
 						Function.identity()));
 		List<GadgetItem> gadgetItems = itemConvertService.convert(almaItems);
 		this.gadgets = List.copyOf(gadgetItems);
+		return this.gadgets.size();
 	}
 
-	public List<GadgetItem> getItems() {
+	public Map<String, AlmaItem> getAlmaItems() {
+		return this.items;
+	}
+
+	public List<GadgetItem> getGadgets() {
 		return this.gadgets;
 	}
 
