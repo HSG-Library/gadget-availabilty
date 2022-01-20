@@ -57,6 +57,14 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>io.micronaut.security</groupId>
+			<artifactId>micronaut-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micronaut.reactor</groupId>
+			<artifactId>micronaut-reactor</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>io.micronaut.views</groupId>
 			<artifactId>micronaut-views-handlebars</artifactId>
 		</dependency>

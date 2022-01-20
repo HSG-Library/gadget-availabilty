@@ -7,6 +7,12 @@ micronaut:
         enabled: true
         mapping: "/assets/**"
         paths: "classpath:views/assets"
+  security:
+    intercept-url-map:
+      -
+        pattern: /**
+        access:
+          - isAnonymous()  
 
 alma-api:
   url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
