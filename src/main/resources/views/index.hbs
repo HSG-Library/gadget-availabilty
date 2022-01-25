@@ -1,53 +1,42 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="de">
 <head>
-	{{>views/head-common-partial}}
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/jquery.toast.min.js"></script>
-	<script type="text/javascript" src="assets/js/toast.js"></script>
-	<script type="text/javascript" src="assets/js/worker.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="assets/css/jquery.toast.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/availabilityStyle.css?v0.4.0" />
-
-	<title>Availability Service</title>
+	{{>views/partials/head-common-partial}}
+	<title>Verfügbarkeit Kleinmaterialien | Bibliothek Universität St.Gallen</title>
 </head>
-
 <body>
-	<div class="logo">
-		<a href="https://www.unisg.ch/universitaet/bibliothek">
-			<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
-		</a>
-	</div>
-	<header>Verfügbarkeit Kleinmaterialien</header>
-	<nav>
-		<ul id="navi">
-			<li><a class="reload" href="/">&#10227;</a></li>
-			<li><a class="info" href="/info">&#9432;</a></li>
-		</ul>
-	</nav>
-	<div id="search">
-		<input type="text" placeholder="Suche nach..." id="filter-search" />
-	</div>
-	<div id="loading">
-		<div class="lading-animation">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+	<header>
+		<div class="logo">
+			<a href="https://www.unisg.ch/universitaet/bibliothek">
+				<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
+			</a>
 		</div>
-	</div>
-	<div id="items"></div>
-	<footer>
-		<address>
-			<a href="https://www.unisg.ch/universitaet/bibliothek">HSG-Bibliothek</a> &bull;
-			<a href="mailto:bibliothek@unisg.ch">bibliothek@unisg.ch</a> &bull;
-			+41 71 224 22 70 &bull;
-			Dufourstrasse 50 &bull;
-			CH-9000 St.Gallen
-		</address>
-	</footer>
+		<nav>
+			<div id="search">
+				<input type="text" placeholder="Suche" id="js-search-input" />
+				<span id="js-search-button" class="clickable search">
+					<i class="fa fa-fw fa-search" aria-hidden="true"></i>
+				</span>
+			</div>
+			<ul>
+				<li><a class="clickable reload" href="/" title="reload"><i class="fa fa-fw fa-refresh" aria-hidden="true"></i></a></li>
+				<li><a class="clickable info" href="/info" title="info"><i class="fa fa-fw fa-info" aria-hidden="true"></i></a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1 id="js-title">Verfügbare Gadgets</h1>
+		{{>views/partials/loader-partial}}
+		<ul id="items" class="js-items">
+			<!-- inject items here -->
+		</ul>
+		<div id="js-error" class="error hide">
+			<h2>Fehler</h2>
+			<p>
+				Die verfügbaren Gadgets konnten nicht geladen werden. Bitte probieren sie es später nocheinmal.
+			</p>
+		</div>
+	</main>
+	{{>views/partials/footer-common-partial}}
 </body>
-
 </html>
