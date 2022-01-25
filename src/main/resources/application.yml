@@ -1,6 +1,11 @@
 micronaut:
   server:
     port: 8080
+    http-version: 2.0
+    netty:
+      responses:
+        file:
+          cache-seconds: 8640000
   router:
     static-resources:
       default:
