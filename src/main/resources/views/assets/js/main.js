@@ -7,7 +7,6 @@ gadgets = {
 		console.log("init gadgets");
 		this.loadGadgets();
 		this.registerSearchToggle();
-		this.registerSearch();
 		this.registerDescriptionToggle();
 	},
 
@@ -63,12 +62,12 @@ gadgets = {
 		searchButton.addEventListener("click", function () {
 			const input = util.byId("js-search-input");
 			input.classList.toggle("active");
-			input.focus();
+			if (input.classList.contains("active")) {
+				input.focus();
+			} else {
+				input.blur();
+			}
 		});
-	},
-
-	registerSearch: function () {
-		console.log("filter items");
 	},
 
 	registerDescriptionToggle: function () {
