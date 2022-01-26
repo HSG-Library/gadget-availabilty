@@ -28,16 +28,18 @@ gadgets = {
 					idx,
 					gadget.callno,
 					gadget.img_id,
-					gadget.note,
+					(gadget.note || ""),
 					gadget.available,
-					gadget.total
+					gadget.total,
+					gadget.details,
 				);
+				console.log(gadget.details);
 				totalAvailable += gadget.available;
 				totalItems += gadget.total;
 				searchIndex.push(
 					{
 						id: gadget.volume,
-						txt: gadget.callno.toLowerCase() + " " + gadget.note.toLowerCase()
+						txt: gadget.callno.toLowerCase() + " " + (gadget.note || "").toLowerCase()
 					}
 				);
 			});
@@ -74,8 +76,13 @@ gadgets = {
 		document.addEventListener("click", event => {
 			if (event.target.closest(".tile")) {
 				const tile = event.target.closest(".tile");
-				const desc = tile.querySelectorAll(".description");
-				desc.forEach((el) => { el.classList.toggle("active"); })
+				if (event.altKey) {
+					const details = tile.querySelectorAll(".js-details");
+					details.forEach((el) => { el.classList.toggle("hide"); })
+				} else {
+					const desc = tile.querySelectorAll(".js-description");
+					desc.forEach((el) => { el.classList.toggle("active"); })
+				}
 			}
 		});
 	},
@@ -106,16 +113,17 @@ gadgets = {
 };
 
 item = {
-	getMarkup: function (id, delay, title, img, description, available, total) {
+	getMarkup: function (id, delay, title, img, description, available, total, details) {
 		let availableClass = "available";
 		if (available == 0) {
 			availableClass = "notAvailable";
 		}
 		const delayMs = Math.floor((delay / 3) * 100);
 		const markup = '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
-			'<div class="info"><h2>' + title + '</h2></div>' +
+			'<div class="info js-info"><h2>' + title + '</h2></div>' +
 			'<div class="container" style="background-image: url(assets/img/' + img + ');">' +
-			'<p class="description">' + title + '<br>' + description + '</p>' +
+			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
+			'<p class="description js-description">' + title + '<br>' + description + '</p>' +
 			'<p class="availability">' + available + ' / ' + total + '</p>' +
 			'</div>' +
 			'</li >'

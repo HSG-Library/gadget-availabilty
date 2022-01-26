@@ -235,6 +235,17 @@ a:hover {
 	color: #282828;
 }
 
+#items .details {
+	position: absolute;
+	font-family: Monaco, monospace;
+	background-color: #FFF04B;
+	font-size: 7px;
+	padding: 10px;
+	overflow: scroll;
+	width: 240px;
+	height: 197px;
+}
+
 footer {
 	padding: 30px 20px 40px 20px;
 	display: flex;
@@ -252,6 +263,12 @@ footer address {
 
 footer .social {
 	margin-bottom: 40px;
+}
+
+.alma {
+	font-weight: 300;
+	font-size: 8px;
+	color: #d0d0d0;
 }
 
 .error {

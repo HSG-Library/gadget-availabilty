@@ -25,12 +25,15 @@ public class ItemConvertService {
 				.forEach(itemData -> {
 					// if an item with the same enum A is in the map increment total and avail count
 					groupedItems.computeIfPresent(itemData.getEnumerationA(), (key, currentItem) -> {
-						currentItem.incrementTotal();
-						currentItem.addToAvailable(itemData.getBaseStatus().getValue());
+						currentItem
+								.incrementTotal()
+								.addToAvailable(itemData.getBaseStatus().getValue())
+								.updateNote(itemData.getPublicNote())
+								.addDetails(itemData);
 						return currentItem;
 					});
 					// if an item is not in the map, add it with total 1 and avail status
-					groupedItems.putIfAbsent(itemData.getEnumerationA(), createGadgetItem(itemData)); 
+					groupedItems.putIfAbsent(itemData.getEnumerationA(), createGadgetItem(itemData));
 				});
 
 		return List.copyOf(groupedItems.values());
@@ -42,9 +45,10 @@ public class ItemConvertService {
 				itemData.getBaseStatus().getValue(),
 				convertName(itemData),
 				convertImgId(itemData),
-				StringUtils.defaultIfBlank(itemData.getPublicNote(), "-"),
+				StringUtils.defaultString(itemData.getPublicNote()),
 				StringUtils.defaultString(itemData.getEnumerationA()),
-				StringUtils.defaultString(itemData.getDescription()));
+				StringUtils.defaultString(itemData.getDescription()),
+				itemData);
 	}
 
 	private String convertName(AlmaItemData itemData) {
