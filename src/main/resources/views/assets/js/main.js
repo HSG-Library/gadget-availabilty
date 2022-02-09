@@ -33,7 +33,6 @@ gadgets = {
 					gadget.total,
 					gadget.details,
 				);
-				console.log(gadget.details);
 				totalAvailable += gadget.available;
 				totalItems += gadget.total;
 				searchIndex.push(
@@ -121,7 +120,7 @@ item = {
 		const delayMs = Math.floor((delay / 3) * 100);
 		const markup = '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
 			'<div class="info js-info"><h2>' + title + '</h2></div>' +
-			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.png);;">' +
+			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.jpg);;">' +
 			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
 			'<p class="description js-description">' + title + '<br>' + description + '</p>' +
 			'<p class="availability">' + available + ' / ' + total + '</p>' +

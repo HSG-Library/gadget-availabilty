@@ -179,8 +179,8 @@ a:hover {
 }
 
 #items .notAvailable .info {
-	background-color: #EB6969;
-	color: #282828;
+	background-color: rgb(163 74 75); /*#EB6969;*/
+	color: #fff; /*#282828;*/
 }
 
 #items .container {
@@ -193,7 +193,7 @@ a:hover {
 }
 
 #items .info h2 {
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 16px;
 }
 
@@ -231,8 +231,8 @@ a:hover {
 }
 
 #items .notAvailable .availability {
-	background-color: #EB6969;
-	color: #282828;
+	background-color: rgb(163 74 75); /*#EB6969;*/
+	color: #fff; /*#282828;*/
 }
 
 #items .details {
@@ -274,7 +274,7 @@ footer .social {
 .error {
 	padding: 10px;
 	font-weight: 300;
-	background-color: #EB6969;
+	background-color: rgb(163 74 75); /*#EB6969;*/
 	color: #fff;
 }
 

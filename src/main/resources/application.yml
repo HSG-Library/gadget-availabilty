@@ -26,7 +26,7 @@ alma-api:
   page-size: 100
 
 gadget-availability:
-  image-ext: .png  
+  image-ext: .jpg  
 
 HMAC:
   algorithm: HmacSHA256
