@@ -179,8 +179,8 @@ a:hover {
 }
 
 #items .notAvailable .info {
-	background-color: rgb(163 74 75); /*#EB6969;*/
-	color: #fff; /*#282828;*/
+	background-color: rgb(163 74 75);
+	color: #fff;
 }
 
 #items .container {
@@ -231,8 +231,8 @@ a:hover {
 }
 
 #items .notAvailable .availability {
-	background-color: rgb(163 74 75); /*#EB6969;*/
-	color: #fff; /*#282828;*/
+	background-color: rgb(163 74 75);
+	color: #fff;
 }
 
 #items .details {
@@ -274,7 +274,7 @@ footer .social {
 .error {
 	padding: 10px;
 	font-weight: 300;
-	background-color: rgb(163 74 75); /*#EB6969;*/
+	background-color: rgb(163 74 75);
 	color: #fff;
 }
 
@@ -297,10 +297,20 @@ footer .social {
 	line-height: 23px;
 }
 
+#info ul li i {
+	font-size: 60%;
+	vertical-align: middle;
+	margin-top: -2px;
+}
+
 #info .infotext {
 	font-weight: 300;
 	line-height: 23px;
 	margin: 30px 0px;
+}
+
+#info a {
+	text-decoration: underline;
 }
 
 /* Loader from: https://loading.io/css/ */
