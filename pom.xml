@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>io.micronaut</groupId>
 		<artifactId>micronaut-parent</artifactId>
-		<version>3.2.7</version>
+		<version>3.3.4</version>
 	</parent>
 
 	<properties>
@@ -18,7 +18,7 @@
 		<release.version>11</release.version>
 		<exec.mainClass>ch.unisg.biblio.systemlibrarian.Application</exec.mainClass>
 		<micronaut.runtime>jetty</micronaut.runtime>
-		<micronaut.version>3.2.7</micronaut.version>
+		<micronaut.version>3.3.4</micronaut.version>
 		<apacheCommonsLang3.version>3.12.0</apacheCommonsLang3.version>
 	</properties>
 
