@@ -36,7 +36,7 @@ class GadgetAvailabilityTest {
 		CronExpression cronExpression = CronExpression.create("0 */30 7-21 * * *");
 		System.out.println(cronExpression.getExpression());
 		var timeAfter = LocalDateTime.now().atZone(ZoneId.systemDefault());
-		for(int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 			var nextTime = cronExpression.nextTimeAfter(timeAfter);
 			timeAfter = nextTime;
 			System.out.println(nextTime);
@@ -46,7 +46,7 @@ class GadgetAvailabilityTest {
 	@MockBean(AlmaClient.class)
 	AlmaClient almaClient() {
 		AlmaClient almaClientMock = mock(AlmaClient.class);
-		when(almaClientMock.getItems(any(), any(), any(), any(), any()))
+		when(almaClientMock.getItems(any(), any(), any(), any(), any(), any()))
 				.thenReturn(new AlmaItemResponse());
 		return almaClientMock;
 	}

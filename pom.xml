@@ -21,6 +21,7 @@
 		<micronaut.version>3.3.4</micronaut.version>
 		<apacheCommonsLang3.version>3.12.0</apacheCommonsLang3.version>
 		<maven.versions.plugin.version>2.9.0</maven.versions.plugin.version>
+		<maven.enforcer.plugin.version>3.0.0</maven.enforcer.plugin.version>
 	</properties>
 
 	<repositories>
@@ -151,6 +152,26 @@
 							<goal>display-dependency-updates</goal>
 							<goal>display-plugin-updates</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${maven.enforcer.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.6</version>
+								</requireMavenVersion>
+							</rules>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

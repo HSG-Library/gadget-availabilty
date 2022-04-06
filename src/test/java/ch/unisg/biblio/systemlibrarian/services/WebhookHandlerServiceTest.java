@@ -31,7 +31,7 @@ public class WebhookHandlerServiceTest {
 	@MockBean(AlmaClient.class)
 	AlmaClient almaClient() {
 		AlmaClient almaClientMock = mock(AlmaClient.class);
-		when(almaClientMock.getItems(any(), any(), any(), any(), any()))
+		when(almaClientMock.getItems(any(), any(), any(), any(), any(), any()))
 				.thenReturn(new AlmaItemResponse());
 		return almaClientMock;
 	}

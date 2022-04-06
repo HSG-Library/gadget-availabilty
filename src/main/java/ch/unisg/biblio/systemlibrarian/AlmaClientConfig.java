@@ -11,6 +11,8 @@ public class AlmaClientConfig {
 	private String mmsId;
 	private String holdingId;
 	private String apiKey;
+	private String location;
+	private Integer pageSize;
 
 	public String getMmsId() {
 		return mmsId;
@@ -34,5 +36,21 @@ public class AlmaClientConfig {
 
 	public void setApiKey(String apiKey) {
 		this.apiKey = apiKey;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Integer getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
 	}
 }

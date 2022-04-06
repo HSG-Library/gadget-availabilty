@@ -30,13 +30,13 @@ class AlmaWebhookControllerTest {
 	AlmaWebhookController almaWebhookController;
 
 	@Inject
-    @Client("/")
+	@Client("/")
 	HttpClient client;
 
 	@MockBean(AlmaClient.class)
 	AlmaClient almaClient() {
 		AlmaClient almaClientMock = mock(AlmaClient.class);
-		when(almaClientMock.getItems(any(), any(), any(), any(), any()))
+		when(almaClientMock.getItems(any(), any(), any(), any(), any(), any()))
 				.thenReturn(new AlmaItemResponse());
 		return almaClientMock;
 	}
@@ -53,8 +53,8 @@ class AlmaWebhookControllerTest {
 	@Test
 	public void testRecieveWebhook() {
 		MutableHttpRequest<String> webhookPostRequest = HttpRequest
-		.POST("/alma/webhook", JSON_BODY)
-		.header("X-Exl-Signature", SIGNATURE);
+				.POST("/alma/webhook", JSON_BODY)
+				.header("X-Exl-Signature", SIGNATURE);
 		HttpResponse<String> response = client.toBlocking().exchange(webhookPostRequest, String.class);
 		System.out.println(response);
 		Assertions.assertEquals(HttpResponse.ok().status(), response.status());
