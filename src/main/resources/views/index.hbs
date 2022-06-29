@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
 	{{>views/partials/head-common-partial}}
 	<title>Gadgets | Bibliothek Universität St.Gallen</title>
 </head>
+
 <body>
 	<header>
 		<div class="logo">
@@ -25,7 +27,7 @@
 		</nav>
 	</header>
 	<main>
-		<h1 id="js-title">Verfügbare Gadgets</h1>
+		<h1 class="visuallyHidden" aria-label="Gadgets">Gadgets</h1>
 		{{>views/partials/loader-partial}}
 		<ul id="items" class="js-items">
 			<!-- inject items here -->
@@ -39,4 +41,5 @@
 	</main>
 	{{>views/partials/footer-common-partial}}
 </body>
+
 </html>

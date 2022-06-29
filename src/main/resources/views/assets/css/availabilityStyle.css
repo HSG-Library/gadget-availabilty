@@ -292,6 +292,11 @@ footer .social {
 	display: none;
 }
 
+.visuallyHidden {
+	font-size: 0;
+	height: 0;
+}
+
 #info ul {
 	font-weight: 300;
 	line-height: 23px;
