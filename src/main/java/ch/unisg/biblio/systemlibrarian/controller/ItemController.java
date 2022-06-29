@@ -1,28 +1,34 @@
 package ch.unisg.biblio.systemlibrarian.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
 import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
-import ch.unisg.biblio.systemlibrarian.services.ItemConvertService;
-import ch.unisg.biblio.systemlibrarian.services.ItemFetchService;
+import ch.unisg.biblio.systemlibrarian.services.GadgetProviderService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 
 @Controller("/gadgets")
 public class ItemController {
 
-	private ItemFetchService itemFetchService;
-	private ItemConvertService itemConvertService;
+	private GadgetProviderService gadgetProviderService;
 
-	public ItemController(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
-		this.itemFetchService = itemFetchService;
-		this.itemConvertService = itemConvertService;
+	public ItemController(GadgetProviderService gatgetProviderService) {
+		this.gadgetProviderService = gatgetProviderService;
 	}
 
 	@Get("/all")
-	public List<GadgetItem> all() {
-		List<AlmaItem> almaItems = itemFetchService.fetchAll();
-		return itemConvertService.convert(almaItems);
+	public Collection<GadgetItem> all() {
+		return sortGadgetItems(gadgetProviderService.getGadgets());
 	}
+
+	private List<GadgetItem> sortGadgetItems(Collection<GadgetItem> items) {
+		List<GadgetItem> gadgetItems = new ArrayList<>(items);
+		gadgetItems.sort((o1, o2) -> {
+			return o1.getDescription().compareTo(o2.getDescription());
+		});
+		return gadgetItems;
+	}
+
 }

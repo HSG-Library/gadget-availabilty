@@ -19,5 +19,6 @@ public interface AlmaClient {
 			@PathVariable String holdingId,
 			@QueryValue("limit") Integer limit,
 			@QueryValue("offset") Integer offset,
+			@QueryValue("current_location") String currentLocation,
 			@QueryValue("apiKey") String apiKey);
 }

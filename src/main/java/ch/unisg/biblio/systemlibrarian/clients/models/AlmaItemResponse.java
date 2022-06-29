@@ -10,10 +10,10 @@ import io.micronaut.core.annotation.Introspected;
 public class AlmaItemResponse {
 
 	@JsonProperty("total_record_count")
-	private Integer totalRecordCount;
+	private Integer totalRecordCount = 0;
 
 	@JsonProperty("item")
-	private List<AlmaItem> items;
+	private List<AlmaItem> items = List.of();
 
 	public Integer getTotalRecordCount() {
 		return totalRecordCount;

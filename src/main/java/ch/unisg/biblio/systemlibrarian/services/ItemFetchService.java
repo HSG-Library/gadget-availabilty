@@ -7,7 +7,6 @@ import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
 import ch.unisg.biblio.systemlibrarian.clients.AlmaClient;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItemResponse;
-import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
 
 @Singleton
@@ -15,9 +14,6 @@ public class ItemFetchService {
 
 	private AlmaClient almaClient;
 	private AlmaClientConfig config;
-
-	@Value("${alma-api.page-size:100}")
-	private int pageSize;
 
 	public ItemFetchService(AlmaClient almaClient, AlmaClientConfig config) {
 		this.almaClient = almaClient;
@@ -43,16 +39,17 @@ public class ItemFetchService {
 		return almaClient.getItems(
 				config.getMmsId(),
 				config.getHoldingId(),
-				pageSize,
+				config.getPageSize(),
 				offset,
+				config.getLocation(),
 				config.getApiKey());
 	}
 
 	private int pageOffset(int currentPage, int totalRecordCount) {
-		return Math.min(currentPage * pageSize, totalRecordCount);
+		return Math.min(currentPage * config.getPageSize(), totalRecordCount);
 	}
 
 	private boolean hasMoreItems(int currentPage, int totalRecordCount) {
-		return totalRecordCount > currentPage * pageSize;
+		return totalRecordCount > currentPage * config.getPageSize();
 	}
 }

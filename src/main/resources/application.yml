@@ -1,18 +1,34 @@
 micronaut:
   server:
     port: 8080
+    http-version: 2.0
+    netty:
+      responses:
+        file:
+          cache-seconds: 8640000
   router:
     static-resources:
       default:
         enabled: true
         mapping: "/assets/**"
         paths: "classpath:views/assets"
+  security:
+    intercept-url-map:
+      -
+        pattern: /**
+        access:
+          - isAnonymous()  
 
 alma-api:
   url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
   mmsId: 994889360105506
   holdingId: 2236603930005506
+  location: RESE
   page-size: 100
 
 gadget-availability:
-  image-ext: .png  
+  image-ext: .jpg  
+
+HMAC:
+  algorithm: HmacSHA256
+  #secret: <provide via commandline on prod '-DHMAC.secret=123456'>

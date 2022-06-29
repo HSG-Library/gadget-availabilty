@@ -1,0 +1,13 @@
+mockito:
+  test:
+    enabled
+
+alma-api:
+  apiKey: no-key-needed-for-testing
+
+HMAC:
+  secret: 123456
+
+admin:
+  username: unit-test
+  password: test-unit

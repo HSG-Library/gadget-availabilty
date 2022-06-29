@@ -1,51 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
-	{{>views/head-common-partial}}
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="assets/css/availabilityStyle.css?v0.4.0" />
-	<title>Availability Service</title>
+	{{>views/partials/head-common-partial}}
+	<title>Gadgets: Info | Bibliothek Universität St.Gallen</title>
 </head>
 
 <body>
-	<div class="logo">
-		<a href="http://www.biblio.unisg.ch">
-			<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
-		</a>
-	</div>
-	<header>Infos zur Ausleihe</header>
-	<nav>
-		<ul id="navi">
-			<li><a class="reload" href="/info">&#10227;</a></li>
-			<li><a class="back" href="/">&#8592</a></li>
-		</ul>
-	</nav>
-	<div id="info">
-		<p class="instructions">
-			<b>Ausleihbedingungen für alle Kleinmaterialien:</b>
+	<header>
+		<div class="logo">
+			<a href="https://www.unisg.ch/universitaet/bibliothek">
+				<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
+			</a>
+		</div>
+		<nav>
+			<ul>
+				<li>
+					<a class="clickable reload" href="/info" title="reload"><i class="fa fa-fw fa-refresh"
+							aria-hidden="true"></i></a>
+				</li>
+				<li>
+					<a class="clickable back" href="/" titel="back"><i class="fa fa-arrow-left"
+							aria-hidden="true"></i></i></a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main id="info">
+		<h1>Ausleihbedingungen für Kleinmaterialien</h1>
 		<ul>
-			<li>Tagesausleihe: Rückgabe bis Schließung gleichentags</li>
-			<li>Gebühr verspätete Rückgabe: CHF 5.- pro Tag</li>
-			<li>Bitte Ladekabel so rasch wie möglich wieder zurückbringen.</li>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Tagesausleihe: Rückgabe bis Schliessung
+				gleichentags
+			</li>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Mahngebühren für verspätete Rückgabe: 1. und
+				2. Verspätungstag je CHF 5.- / 3. Verspätungstag plus CHF 10.-
+			</li>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Bitte Ladekabel so rasch wie möglich wieder
+				zurückbringen
+			</li>
 		</ul>
 
-		Vermissen Sie etwas bei unseren Kleinmaterialien? Schreiben Sie es auf unsere
-		<a href="https://de.padlet.com/HSGBibliothek/Ideenwand" alt="Ideenwand" target="_blank">Ideenwand!</a></br>
-		Bei Fragen oder Anregungen steht Ihnen das Bibliothekspersonal gerne zur Verfügung. <br>
-		<a href="https://www.unisg.ch/de/universitaet/bibliothek/ueberuns/oeffnungszeiten">Öffnungszeiten der
-			Bibliothek</a>
+		<p class="infotext">
+			Vermissen Sie etwas bei unseren Kleinmaterialien? Schreiben Sie es auf unsere
+			<a href="https://de.padlet.com/HSGBibliothek/Ideenwand" alt="Ideenwand" target="_blank"
+				rel="noopener">Ideenwand!</a>
+			<br>
+			<br>
+			Bei Fragen oder Anregungen steht Ihnen das Bibliothekspersonal gerne zur Verfügung. <br>
+			<a href="https://www.unisg.ch/de/universitaet/bibliothek/ueberuns/oeffnungszeiten" target="_blank"
+				rel="noopener">Öffnungszeiten der
+				Bibliothek</a>
 		</p>
-	</div>
-	<footer>
-		<address>
-			<a href="https://www.unisg.ch/universitaet/bibliothek">HSG-Bibliothek</a> &bull;
-			<a href="mailto:bibliothek@unisg.ch">bibliothek@unisg.ch</a> &bull;
-			+41 71 224 22 70 &bull;
-			Dufourstrasse 50 &bull;
-			CH-9000 St.Gallen &bull;
-		</address>
-	</footer>
+
+		<h1>Borrowing regulations for gadgets</h1>
+		<ul>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Day loan: return until closing on the same day
+			</li>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Reminder fees for late return: 1st and 2nd day
+				of delay CHF 5.- each / 3rd day of delay plus CHF 10.-
+			</li>
+			<li>
+				<i class="fa fw fa-minus" aria-hidden="true"></i> Please return charging cables as soon as
+				possible
+			</li>
+		</ul>
+
+		<p class="infotext">
+			Do you miss anything in our gadget selection? Write it on our
+			<a href="https://de.padlet.com/HSGBibliothek/Ideenwand" alt="idea wall" target="_blank" rel="noopener">idea
+				wall!</a>
+			<br>
+			<br>
+			If you have any questions or suggestions, the library staff will be happy to help. <br>
+			<a href="https://www.unisg.ch/en/universitaet/bibliothek/ueberuns/oeffnungszeiten" target="_blank"
+				rel="noopener">Library opening hours</a>
+		</p>
+	</main>
+	{{>views/partials/footer-common-partial}}
 </body>
 
 </html>

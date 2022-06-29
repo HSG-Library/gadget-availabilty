@@ -8,15 +8,23 @@ In the project root directory run
 ```
 The runnable jar will be created under `target/` 
 
+## How to deploy
+### Github Workflows
+There are two Github workflows in place:
+* On push to `develop`, which builds and deploys the app to the Microsoft Azure DEV environment (https://kleinmaterialien.azurewebsites.net)
+* On push to `main` which builds and deploys the app to the Microsoft Azure PROD environment (https://gadgets.unisg.ch)
+
 ## How to run
-Java, version >=11, needs to be installed, run
+Java, version >=11, needs to be installed. 
 ```
-java -jar gadget-availabilty-1.0.0.jar -DapiKey=<key> -Dmicronaut.environments=prod
+java -jar gadget-availabilty-1.0.0.jar -Dalma-api.apiKey=<key> -DHMAC.secret=<secret> -Dmicronaut.environments=prod -Dadmin.username=<username> -Dadmin.password=<password>
 ```
 ### JVM Parameters
-| Parameter | Value        |
-| --------- | ------------ |
-| apiKey    | Alma API key. Needs at least read access to the 'Bibs' area in the production environment|
-|micronaut.environments | Currently there are two environments `local` and `prod`. The only difference is the server port: `local` uses `8080` while `prod` uses `80`.
-
+| Parameter              | Value                                                                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| alma-api.apiKey        | Alma API key. Needs at least read access to the 'Bibs' area in the production environment                                                    |
+| HMAC.secret            | Shared secret defined in the Alma Webhook Integration config                                                                                 |
+| admin.username         | Username for the basic-auth login to manually reload all gadgets                                                                             |
+| admin.password         | Password for the basic-auth login to manually reload all gadgets                                                                             |
+| micronaut.environments | Currently there are two environments `local` and `prod`. The only difference is the server port: `local` uses `8080` while `prod` uses `80`. |
 

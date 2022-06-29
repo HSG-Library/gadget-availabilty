@@ -1,6 +1,13 @@
 package ch.unisg.biblio.systemlibrarian.controller.dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import org.apache.commons.lang3.StringUtils;
+
+import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem.AlmaItemData;
 
 public class GadgetItem {
 	private int total;
@@ -11,6 +18,7 @@ public class GadgetItem {
 	private String note;
 	private String volume;
 	private String description;
+	private List<AlmaItemData> details;
 
 	public GadgetItem(
 			int total,
@@ -19,7 +27,8 @@ public class GadgetItem {
 			String imgId,
 			String note,
 			String volume,
-			String description) {
+			String description,
+			AlmaItemData almaItemData) {
 		this.total = total;
 		this.available = available;
 		this.callno = callno;
@@ -27,22 +36,26 @@ public class GadgetItem {
 		this.note = note;
 		this.volume = volume;
 		this.description = description;
+		this.details = new ArrayList<>();
+		details.add(almaItemData);
 	}
 
 	public int getTotal() {
 		return this.total;
 	}
 
-	public void incrementTotal() {
+	public GadgetItem incrementTotal() {
 		this.total++;
+		return this;
 	}
 
 	public int getAvailable() {
-		return available;
+		return this.available;
 	}
 
-	public void addToAvailable(int increment) {
+	public GadgetItem addToAvailable(int increment) {
 		this.available = this.available + increment;
+		return this;
 	}
 
 	public String getCallno() {
@@ -57,11 +70,27 @@ public class GadgetItem {
 		return this.note;
 	}
 
+	public GadgetItem updateNote(String note) {
+		if (StringUtils.isBlank(this.note)) {
+			this.note = note;
+		}
+		return this;
+	}
+
 	public String getVolume() {
 		return this.volume;
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
+	}
+
+	public List<AlmaItemData> getDetails() {
+		return List.copyOf(this.details);
+	}
+
+	public GadgetItem addDetails(AlmaItemData details) {
+		this.details.add(details);
+		return this;
 	}
 }
