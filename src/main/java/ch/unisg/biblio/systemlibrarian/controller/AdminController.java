@@ -1,6 +1,7 @@
 package ch.unisg.biblio.systemlibrarian.controller;
 
 import java.lang.invoke.MethodHandles;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +28,11 @@ public class AdminController {
 	}
 
 	@Get("/reset")
-	public HttpResponse<String> resetGadgets() {
+	public HttpResponse<Object> resetGadgets() {
 		LOG.warn("Manually reset gadgets");
 		int gadgetsCount = this.gadgetProviderService.initGadgets();
 		LOG.info("Recieved '{}' gadgets", gadgetsCount);
-		return HttpResponse.ok("Reset '" + gadgetsCount + "' gadgets");
+		return HttpResponse.ok(Map.of("msg", "Reset '" + gadgetsCount + "' gadgets"));
 	}
 
 	@Get("/items")

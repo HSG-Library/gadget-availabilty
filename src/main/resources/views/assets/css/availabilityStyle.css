@@ -271,6 +271,12 @@ footer .social {
 	color: #d0d0d0;
 }
 
+.alma a {
+	font-weight: 300;
+	font-size: 8px;
+	color: #d0d0d0;
+}
+
 .error {
 	padding: 10px;
 	font-weight: 300;

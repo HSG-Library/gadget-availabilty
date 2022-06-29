@@ -42,6 +42,8 @@ gadgets = {
 					}
 				)
 			})
+			console.log("total gadgets:", totalItems)
+			console.log("total available:", totalAvailable)
 			list.innerHTML = itemsMarkup
 			gadgets.initSearch(searchIndex)
 		} else {
