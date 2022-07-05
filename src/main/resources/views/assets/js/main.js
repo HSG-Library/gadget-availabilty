@@ -122,7 +122,7 @@ item = {
 			'<div class="info js-info"><h2>' + title + '</h2></div>' +
 			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.jpg);;">' +
 			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
-			'<p class="description js-description">' + title + '<br>' + description + '</p>' +
+			'<p class="description js-description"><span class="description-title">' + title + '</span><br>' + description + '</p>' +
 			'<p class="availability">' + available + ' / ' + total + '</p>' +
 			'</div>' +
 			'</li >'
