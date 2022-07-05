@@ -195,6 +195,9 @@ a:hover {
 #items .info h2 {
 	font-weight: 400;
 	font-size: 16px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 #items .description {
@@ -215,7 +218,7 @@ a:hover {
 	transition: all 0.2s ease-out;
 }
 
-#items .description::first-line {
+#items .description .description-title {
 	font-weight: 400;
 }
 
