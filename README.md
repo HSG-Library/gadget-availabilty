@@ -6,7 +6,7 @@ In the project root directory run
 ```
 ./mvnw package
 ```
-The runnable jar will be created under `target/` 
+The runnable jar will be created under `target/`
 
 ## How to deploy
 ### Github Workflows
@@ -15,7 +15,7 @@ There are two Github workflows in place:
 * On push to `main` which builds and deploys the app to the Microsoft Azure PROD environment (https://gadgets.unisg.ch)
 
 ## How to run
-Java, version >=11, needs to be installed. 
+Java, version >=11, needs to be installed.
 ```
 java -jar gadget-availabilty-1.0.0.jar -Dalma-api.apiKey=<key> -DHMAC.secret=<secret> -Dmicronaut.environments=prod -Dadmin.username=<username> -Dadmin.password=<password>
 ```
@@ -28,3 +28,15 @@ java -jar gadget-availabilty-1.0.0.jar -Dalma-api.apiKey=<key> -DHMAC.secret=<se
 | admin.password         | Password for the basic-auth login to manually reload all gadgets                                                                             |
 | micronaut.environments | Currently there are two environments `local` and `prod`. The only difference is the server port: `local` uses `8080` while `prod` uses `80`. |
 
+#### VSCode launch.json
+Add the following to `launch.json` to run the application in VSCode:
+```json
+{
+	"type": "java",
+	"name": "Launch Application",
+	"request": "launch",
+	"mainClass": "ch.unisg.biblio.systemlibrarian.Application",
+	"projectName": "gadget-availability",
+	"vmArgs": "-Dalma-api.apiKey=<add an actual api key> -DHMAC.secret=1234 -Dmicronaut.environments=local -Dadmin.username=admin -Dadmin.password=password"
+}
+```
