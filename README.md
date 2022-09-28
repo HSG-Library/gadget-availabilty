@@ -40,3 +40,30 @@ Add the following to `launch.json` to run the application in VSCode:
 	"vmArgs": "-Dalma-api.apiKey=<add an actual api key> -DHMAC.secret=1234 -Dmicronaut.environments=local -Dadmin.username=admin -Dadmin.password=password"
 }
 ```
+
+## Dependecy updates
+### Update Micronaut
+* Check the current version of Micronaut: [https://micronaut.io/download/](https://micronaut.io/download/)
+* Set the current Version in the `pom.xml` file in `parent > version` and in `properties > micronaut.version`
+
+### Update other dependencies
+Make sure, the versions of the dependencies to be updates are maintained in properties (`pom.xml`)
+* Check for updates, but only in versions, managed in the properties:
+
+		mvn versions:display-property-updates
+
+* update properties:
+
+		mvn versions:update-properties
+
+### Run tests and start application
+After the `pom.xml` was modified build the application, run all tests and start the application:
+* Build
+
+		mvn clean package
+
+* Run tests
+
+		mvn test
+
+* Run application via VSCode launch
