@@ -14,10 +14,12 @@ micronaut:
         paths: "classpath:views/assets"
   security:
     intercept-url-map:
-      -
-        pattern: /**
+      - pattern: /**
         access:
-          - isAnonymous()  
+          - isAnonymous()
+  http:
+    client:
+      read-timeout: 30s
 
 alma-api:
   url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
@@ -27,7 +29,7 @@ alma-api:
   page-size: 100
 
 gadget-availability:
-  image-ext: .jpg  
+  image-ext: .jpg
 
 HMAC:
   algorithm: HmacSHA256
