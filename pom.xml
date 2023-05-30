@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.unisg.biblio.systemlibrarian</groupId>
 	<artifactId>gadget-availability</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.3</version>
 	<packaging>${packaging}</packaging>
 
 	<parent>
 		<groupId>io.micronaut</groupId>
 		<artifactId>micronaut-parent</artifactId>
-		<version>3.9.2</version>
+		<version>3.8.1</version>
 	</parent>
 
 	<properties>
@@ -19,11 +20,10 @@
 		<release.version>11</release.version>
 		<exec.mainClass>ch.unisg.biblio.systemlibrarian.Application</exec.mainClass>
 		<micronaut.runtime>jetty</micronaut.runtime>
-		<micronaut.version>3.9.2</micronaut.version>
+		<micronaut.version>3.8.1</micronaut.version>
 		<apacheCommonsLang3.version>3.12.0</apacheCommonsLang3.version>
-		<maven.versions.plugin.version>2.15.0</maven.versions.plugin.version>
-		<maven.enforcer.plugin.version>3.3.0</maven.enforcer.plugin.version>
-		<maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+		<maven.versions.plugin.version>2.12.0</maven.versions.plugin.version>
+		<maven.enforcer.plugin.version>3.1.0</maven.enforcer.plugin.version>
 	</properties>
 
 	<repositories>
@@ -35,8 +35,8 @@
 
 	<!--
 		check for updates, but only in versions, managed in the properties:
-		mvn versions:display-property-updates
-		mvn versions:display-plugin-updates
+		mvn
+	versions:display-property-updates
 
 		update properties:
 		mvn versions:update-properties
@@ -130,12 +130,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<!-- Uncomment to enable incremental compilation -->
 					<!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
 
-					<annotationProcessorPaths combine.children="append"/>
+					<annotationProcessorPaths combine.children="append"></annotationProcessorPaths>
 					<compilerArgs>
 						<arg>-Amicronaut.processing.group=ch.unisg.biblio.systemlibrarian</arg>
 						<arg>-Amicronaut.processing.module=gadget-availabilty</arg>
