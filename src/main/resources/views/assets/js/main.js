@@ -26,11 +26,11 @@ gadgets = {
 			let totalAvailable = 0
 			data.forEach((gadget, idx) => {
 				itemsMarkup += item.getMarkup(
-					gadget.volume,
+					gadget.id,
 					idx,
-					gadget.callno,
+					gadget.title,
 					gadget.img_id,
-					(gadget.note || ''),
+					(gadget.description || ''),
 					gadget.available,
 					gadget.total,
 					gadget.details,
@@ -39,8 +39,8 @@ gadgets = {
 				totalItems += gadget.total
 				searchIndex.push(
 					{
-						id: gadget.volume,
-						txt: gadget.callno.toLowerCase() + ' ' + (gadget.note || '').toLowerCase()
+						id: gadget.id,
+						txt: gadget.title.toLowerCase() + ' ' + (gadget.description || '').toLowerCase()
 					}
 				)
 			})

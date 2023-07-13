@@ -26,7 +26,7 @@ public class ItemController {
 
 	private List<GadgetItem> sortGadgetItems(Collection<GadgetItem> items) {
 		List<GadgetItem> gadgetItems = new ArrayList<>(items);
-		gadgetItems.sort(Comparator.comparing(GadgetItem::getDescription));
+		gadgetItems.sort(Comparator.comparing(GadgetItem::getSortKey));
 		return gadgetItems;
 	}
 

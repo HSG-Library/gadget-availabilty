@@ -8,32 +8,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GadgetItem {
-	private final String callno;
-	private final String volume;
-	private final String description;
+	private final String title;
+	private final String id;
+	private final String sortKey;
 	private final List<AlmaItemData> details;
 	private int total;
 	private int available;
 	@JsonProperty("img_id")
 	private String imgId;
-	private String note;
+	private String description;
 
 	public GadgetItem(
 			int total,
 			int available,
-			String callno,
+			String title,
 			String imgId,
-			String note,
-			String volume,
 			String description,
+			String id,
+			String sortKey,
 			AlmaItemData almaItemData) {
 		this.total = total;
 		this.available = available;
-		this.callno = callno;
+		this.title = title;
 		this.imgId = imgId;
-		this.note = note;
-		this.volume = volume;
 		this.description = description;
+		this.id = id;
+		this.sortKey = sortKey;
 		this.details = new ArrayList<>();
 		details.add(almaItemData);
 	}
@@ -56,31 +56,31 @@ public class GadgetItem {
 		return this;
 	}
 
-	public String getCallno() {
-		return this.callno;
+	public String getTitle() {
+		return this.title;
 	}
 
 	public String getImgId() {
 		return this.imgId;
 	}
 
-	public String getNote() {
-		return this.note;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public GadgetItem updateNote(String note) {
-		if (StringUtils.isBlank(this.note)) {
-			this.note = note;
+	public GadgetItem updateDescription(String description) {
+		if (StringUtils.isBlank(this.description)) {
+			this.description = description;
 		}
 		return this;
 	}
 
-	public String getVolume() {
-		return this.volume;
+	public String getId() {
+		return this.id;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getSortKey() {
+		return this.sortKey;
 	}
 
 	public List<AlmaItemData> getDetails() {

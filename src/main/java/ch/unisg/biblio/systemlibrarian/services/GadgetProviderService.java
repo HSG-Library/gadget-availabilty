@@ -5,6 +5,7 @@ import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.runtime.server.event.ServerStartupEvent;
 import io.micronaut.scheduling.annotation.Scheduled;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,10 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 	private Map<String, AlmaItem> items = Collections.emptyMap();
 	private List<GadgetItem> gadgets = Collections.emptyList();
 
-	public GadgetProviderService(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
+	@Inject
+	public GadgetProviderService(
+			final ItemFetchService itemFetchService,
+			final ItemConvertService itemConvertService) {
 		this.itemFetchService = itemFetchService;
 		this.itemConvertService = itemConvertService;
 	}
