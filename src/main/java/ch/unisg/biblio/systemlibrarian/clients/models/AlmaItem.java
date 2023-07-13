@@ -93,7 +93,7 @@ public class AlmaItem {
 		}
 	}
 	
-	public AlmaItem updateAvaliabilty(boolean available) {
+	public AlmaItem updateAvailability(boolean available) {
 		if (available) {
 			this.itemData.baseStatus.setValue(1);
 		} else {

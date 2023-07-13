@@ -71,15 +71,15 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 	}
 
 	public void updateAvailability(String barcode, boolean available) {
-		LOG.info("Update availabilty of '{}' to '{}'", barcode, available);
+		LOG.info("Update availability of '{}' to '{}'", barcode, available);
 		Optional<AlmaItem> item = Optional.ofNullable(items.get(barcode));
 		// barcode unknown, reload complete list
 		if (item.isEmpty()) {
 			initGadgets();
 			return;
 		}
-		// barcode known, update availabity
-		item.map(i -> i.updateAvaliabilty(available))
+		// barcode known, update availability
+		item.map(i -> i.updateAvailability(available))
 				.ifPresent(i -> items.put(barcode, i));
 		// convert and sort almaItems
 		List<GadgetItem> gadgetItems = itemConvertService.convert(List.copyOf(items.values()));
