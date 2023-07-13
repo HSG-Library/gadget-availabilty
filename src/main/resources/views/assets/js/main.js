@@ -11,7 +11,9 @@ gadgets = {
 	},
 
 	loadGadgets: function () {
-		util.get('/gadgets/all', this.onLoadGadgets, this.onLoadGadgetsError)
+		if (util.byClass('.js-load-gadgets').length > 0) {
+			util.get('/gadgets/all', this.onLoadGadgets, this.onLoadGadgetsError)
+		}
 	},
 
 	onLoadGadgets: function () {
@@ -60,6 +62,9 @@ gadgets = {
 
 	registerSearchToggle: function () {
 		const searchButton = util.byId('js-search-button')
+		if (!searchButton) {
+			return
+		}
 		searchButton.addEventListener('click', function () {
 			const input = util.byId('js-search-input')
 			input.classList.toggle('active')
@@ -114,11 +119,11 @@ gadgets = {
 item = {
 	getMarkup: function (id, delay, title, img, description, available, total, details) {
 		let availableClass = 'available'
-		if (available == 0) {
+		if (available === 0) {
 			availableClass = 'notAvailable'
 		}
 		const delayMs = Math.floor((delay / 3) * 100)
-		const markup = '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
+		return '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
 			'<div class="info js-info"><h2>' + title + '</h2></div>' +
 			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.jpg);;">' +
 			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
@@ -126,7 +131,6 @@ item = {
 			'<p class="availability">' + available + ' / ' + total + '</p>' +
 			'</div>' +
 			'</li >'
-		return markup
 	}
 }
 
