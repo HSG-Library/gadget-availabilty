@@ -25,8 +25,8 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 
 	private Map<String, AlmaItem> items = Collections.emptyMap();
 	private List<GadgetItem> gadgets = Collections.emptyList();
-	private ItemFetchService itemFetchService;
-	private ItemConvertService itemConvertService;
+	private final ItemFetchService itemFetchService;
+	private final ItemConvertService itemConvertService;
 
 	public GadgetProviderService(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
 		this.itemFetchService = itemFetchService;

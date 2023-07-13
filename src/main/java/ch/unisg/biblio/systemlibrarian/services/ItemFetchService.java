@@ -12,8 +12,8 @@ import jakarta.inject.Singleton;
 @Singleton
 public class ItemFetchService {
 
-	private AlmaClient almaClient;
-	private AlmaClientConfig config;
+	private final AlmaClient almaClient;
+	private final AlmaClientConfig config;
 
 	public ItemFetchService(AlmaClient almaClient, AlmaClientConfig config) {
 		this.almaClient = almaClient;

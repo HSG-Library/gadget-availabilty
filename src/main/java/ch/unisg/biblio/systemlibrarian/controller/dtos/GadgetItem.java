@@ -12,13 +12,13 @@ import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem.AlmaItemData;
 public class GadgetItem {
 	private int total;
 	private int available;
-	private String callno;
+	private final String callno;
 	@JsonProperty("img_id")
 	private String imgId;
 	private String note;
-	private String volume;
-	private String description;
-	private List<AlmaItemData> details;
+	private final String volume;
+	private final String description;
+	private final List<AlmaItemData> details;
 
 	public GadgetItem(
 			int total,

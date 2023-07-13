@@ -35,9 +35,9 @@ public class WebhookHandlerService {
 	private String algorithm;
 	private String secret;
 
-	private HMACService hmacService;
-	private AlmaClientConfig almaClientConfig;
-	private GadgetProviderService gadgetProviderService;
+	private final HMACService hmacService;
+	private final AlmaClientConfig almaClientConfig;
+	private final GadgetProviderService gadgetProviderService;
 
 	@Inject
 	public WebhookHandlerService(HMACService hmacService,

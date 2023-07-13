@@ -20,7 +20,7 @@ public class AdminController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private GadgetProviderService gadgetProviderService;
+	private final GadgetProviderService gadgetProviderService;
 
 	@Inject
 	public AdminController(GadgetProviderService gadGatgetProviderService) {

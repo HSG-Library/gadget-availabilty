@@ -25,7 +25,7 @@ public class AlmaWebhookController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private WebhookHandlerService webhookHandlerService;
+	private final WebhookHandlerService webhookHandlerService;
 
 	@Inject
 	public AlmaWebhookController(WebhookHandlerService webhookHandlerService) {

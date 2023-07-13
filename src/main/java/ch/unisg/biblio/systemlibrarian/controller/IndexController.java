@@ -9,10 +9,10 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
 
-@Controller("/")
+@Controller()
 public class IndexController {
 
-	private AlmaClientConfig config;
+	private final AlmaClientConfig config;
 
 	@Inject
 	public IndexController(AlmaClientConfig config) {

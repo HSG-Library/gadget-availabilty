@@ -12,7 +12,7 @@ import io.micronaut.http.annotation.Get;
 @Controller("/gadgets")
 public class ItemController {
 
-	private GadgetProviderService gadgetProviderService;
+	private final GadgetProviderService gadgetProviderService;
 
 	public ItemController(GadgetProviderService gatgetProviderService) {
 		this.gadgetProviderService = gatgetProviderService;
