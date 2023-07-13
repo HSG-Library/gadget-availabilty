@@ -14,8 +14,8 @@ public class ItemController {
 
 	private final GadgetProviderService gadgetProviderService;
 
-	public ItemController(GadgetProviderService gatgetProviderService) {
-		this.gadgetProviderService = gatgetProviderService;
+	public ItemController(GadgetProviderService gadgetProviderService) {
+		this.gadgetProviderService = gadgetProviderService;
 	}
 
 	@Get("/all")

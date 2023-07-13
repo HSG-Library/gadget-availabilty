@@ -36,7 +36,7 @@ public class ErrorController {
 
 	@Error(status = HttpStatus.INTERNAL_SERVER_ERROR, global = true)
 	public MutableHttpResponse<Writable> error500(HttpRequest<?> request, Throwable e) {
-		LOG.error("An error occured: '{}'", request.getUri(), e);
+		LOG.error("An error occurred: '{}'", request.getUri(), e);
 		return HttpResponse.serverError(viewsRenderer.render("error/500", Map.of("msg", e.getClass().getSimpleName()), request))
 				.contentType(MediaType.TEXT_HTML);
 	}

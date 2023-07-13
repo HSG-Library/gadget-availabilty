@@ -23,15 +23,15 @@ public class AdminController {
 	private final GadgetProviderService gadgetProviderService;
 
 	@Inject
-	public AdminController(GadgetProviderService gadGatgetProviderService) {
-		this.gadgetProviderService = gadGatgetProviderService;
+	public AdminController(GadgetProviderService gadgetProviderService) {
+		this.gadgetProviderService = gadgetProviderService;
 	}
 
 	@Get("/reset")
 	public HttpResponse<Object> resetGadgets() {
 		LOG.warn("Manually reset gadgets");
 		int gadgetsCount = this.gadgetProviderService.initGadgets();
-		LOG.info("Recieved '{}' gadgets", gadgetsCount);
+		LOG.info("Received '{}' gadgets", gadgetsCount);
 		return HttpResponse.ok(Map.of("msg", "Reset '" + gadgetsCount + "' gadgets"));
 	}
 
