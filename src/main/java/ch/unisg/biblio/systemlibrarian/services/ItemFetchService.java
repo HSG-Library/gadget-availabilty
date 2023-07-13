@@ -22,9 +22,8 @@ public class ItemFetchService {
 
 	public List<AlmaItem> fetchAll() {
 		int currentPage = 1;
-		List<AlmaItem> pages = new ArrayList<>();
 		AlmaItemResponse initialPage = fetch(0);
-		pages.addAll(initialPage.getItems());
+		List<AlmaItem> pages = new ArrayList<>(initialPage.getItems());
 		int totalRecordCount = initialPage.getTotalRecordCount();
 
 		while (hasMoreItems(currentPage, totalRecordCount)) {

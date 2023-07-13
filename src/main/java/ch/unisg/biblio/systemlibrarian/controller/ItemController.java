@@ -2,6 +2,7 @@ package ch.unisg.biblio.systemlibrarian.controller;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
@@ -25,9 +26,7 @@ public class ItemController {
 
 	private List<GadgetItem> sortGadgetItems(Collection<GadgetItem> items) {
 		List<GadgetItem> gadgetItems = new ArrayList<>(items);
-		gadgetItems.sort((o1, o2) -> {
-			return o1.getDescription().compareTo(o2.getDescription());
-		});
+		gadgetItems.sort(Comparator.comparing(GadgetItem::getDescription));
 		return gadgetItems;
 	}
 
