@@ -1,16 +1,15 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem.AlmaItemData;
 import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
 import io.micronaut.context.annotation.Value;
 import jakarta.inject.Singleton;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Singleton
 public class ItemConvertService {

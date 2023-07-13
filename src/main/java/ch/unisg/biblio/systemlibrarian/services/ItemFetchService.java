@@ -1,13 +1,13 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
 import ch.unisg.biblio.systemlibrarian.clients.AlmaClient;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItemResponse;
 import jakarta.inject.Singleton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Singleton
 public class ItemFetchService {

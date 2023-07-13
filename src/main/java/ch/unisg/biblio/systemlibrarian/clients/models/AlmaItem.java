@@ -1,7 +1,6 @@
 package ch.unisg.biblio.systemlibrarian.clients.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
@@ -11,6 +10,15 @@ public class AlmaItem {
 
 	public AlmaItemData getItemData() {
 		return this.itemData;
+	}
+
+	public AlmaItem updateAvailability(boolean available) {
+		if (available) {
+			this.itemData.baseStatus.setValue(1);
+		} else {
+			this.itemData.baseStatus.setValue(0);
+		}
+		return this;
 	}
 
 	@Introspected
@@ -91,14 +99,5 @@ public class AlmaItem {
 		private void setValue(int value) {
 			this.value = value;
 		}
-	}
-	
-	public AlmaItem updateAvailability(boolean available) {
-		if (available) {
-			this.itemData.baseStatus.setValue(1);
-		} else {
-			this.itemData.baseStatus.setValue(0);
-		}
-		return this;
 	}
 }

@@ -1,13 +1,13 @@
 package ch.unisg.biblio.systemlibrarian.controller;
 
-import java.util.Map;
-
 import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.views.View;
 import jakarta.inject.Inject;
+
+import java.util.Map;
 
 @Controller()
 public class IndexController {
@@ -23,8 +23,8 @@ public class IndexController {
 	@Get
 	public HttpResponse<Map<String, Object>> index() {
 		return HttpResponse.ok(Map.of(
-			"mmsId", config.getMmsId(),
-			"holdingId", config.getHoldingId()
+				"mmsId", config.getMmsId(),
+				"holdingId", config.getHoldingId()
 		));
 	}
 

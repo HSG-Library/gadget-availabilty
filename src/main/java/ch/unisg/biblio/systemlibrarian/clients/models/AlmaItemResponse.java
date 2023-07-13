@@ -1,10 +1,9 @@
 package ch.unisg.biblio.systemlibrarian.clients.models;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.micronaut.core.annotation.Introspected;
+
+import java.util.List;
 
 @Introspected
 public class AlmaItemResponse {

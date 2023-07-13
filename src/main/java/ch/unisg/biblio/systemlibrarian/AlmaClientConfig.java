@@ -18,8 +18,16 @@ public class AlmaClientConfig {
 		return mmsId;
 	}
 
+	public void setMmsId(String mmsId) {
+		this.mmsId = mmsId;
+	}
+
 	public String getApiKey() {
 		return apiKey;
+	}
+
+	public void setApiKey(String apiKey) {
+		this.apiKey = apiKey;
 	}
 
 	public String getHoldingId() {
@@ -28,14 +36,6 @@ public class AlmaClientConfig {
 
 	public void setHoldingId(String holdingId) {
 		this.holdingId = holdingId;
-	}
-
-	public void setMmsId(String mmsId) {
-		this.mmsId = mmsId;
-	}
-
-	public void setApiKey(String apiKey) {
-		this.apiKey = apiKey;
 	}
 
 	public String getLocation() {

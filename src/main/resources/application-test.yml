@@ -1,3 +1,7 @@
+micronaut:
+  server:
+    port: 8888
+
 mockito:
   test:
     enabled

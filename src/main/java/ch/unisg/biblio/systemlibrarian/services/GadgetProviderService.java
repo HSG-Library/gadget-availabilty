@@ -1,5 +1,14 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
+import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
+import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
+import io.micronaut.context.event.ApplicationEventListener;
+import io.micronaut.runtime.server.event.ServerStartupEvent;
+import io.micronaut.scheduling.annotation.Scheduled;
+import jakarta.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.invoke.MethodHandles;
 import java.util.Collections;
 import java.util.List;
@@ -8,25 +17,14 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
-import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
-import io.micronaut.context.event.ApplicationEventListener;
-import io.micronaut.runtime.server.event.ServerStartupEvent;
-import io.micronaut.scheduling.annotation.Scheduled;
-import jakarta.inject.Singleton;
-
 @Singleton
 public class GadgetProviderService implements ApplicationEventListener<ServerStartupEvent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
-	private Map<String, AlmaItem> items = Collections.emptyMap();
-	private List<GadgetItem> gadgets = Collections.emptyList();
 	private final ItemFetchService itemFetchService;
 	private final ItemConvertService itemConvertService;
+	private Map<String, AlmaItem> items = Collections.emptyMap();
+	private List<GadgetItem> gadgets = Collections.emptyList();
 
 	public GadgetProviderService(ItemFetchService itemFetchService, ItemConvertService itemConvertService) {
 		this.itemFetchService = itemFetchService;

@@ -1,11 +1,5 @@
 package ch.unisg.biblio.systemlibrarian.controller;
 
-import java.lang.invoke.MethodHandles;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import ch.unisg.biblio.systemlibrarian.services.GadgetProviderService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
@@ -13,6 +7,11 @@ import io.micronaut.http.annotation.Get;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import jakarta.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.util.Map;
 
 @Secured(SecurityRule.IS_AUTHENTICATED)
 @Controller("/admin")

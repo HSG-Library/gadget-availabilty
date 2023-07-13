@@ -1,24 +1,22 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
-import java.lang.invoke.MethodHandles;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.util.Optional;
-
+import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
+import ch.unisg.biblio.systemlibrarian.clients.models.AlmaWebhookLoanItem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
-import ch.unisg.biblio.systemlibrarian.clients.models.AlmaWebhookLoanItem;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.http.HttpResponse;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.lang.invoke.MethodHandles;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 @ConfigurationProperties("HMAC")
 @Requires(property = "HMAC")
@@ -30,17 +28,16 @@ public class WebhookHandlerService {
 	private static final String LOAN_ACTION = "LOAN";
 	private static final String EVENT_LOAN_CREATED = "LOAN_CREATED";
 	private static final String EVENT_LOAN_RETURNED = "LOAN_RETURNED";
-
+	private final HMACService hmacService;
+	private final AlmaClientConfig almaClientConfig;
+	private final GadgetProviderService gadgetProviderService;
 	// injected from config properties
 	private String algorithm;
 	private String secret;
 
-	private final HMACService hmacService;
-	private final AlmaClientConfig almaClientConfig;
-	private final GadgetProviderService gadgetProviderService;
-
 	@Inject
-	public WebhookHandlerService(HMACService hmacService,
+	public WebhookHandlerService(
+			HMACService hmacService,
 			AlmaClientConfig config,
 			GadgetProviderService gadgetProviderService) {
 		this.hmacService = hmacService;

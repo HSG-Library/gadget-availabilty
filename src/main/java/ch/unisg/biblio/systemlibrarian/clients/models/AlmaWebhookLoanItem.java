@@ -1,7 +1,6 @@
 package ch.unisg.biblio.systemlibrarian.clients.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected

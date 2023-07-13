@@ -1,24 +1,22 @@
 package ch.unisg.biblio.systemlibrarian.controller.dtos;
 
+import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem.AlmaItemData;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import org.apache.commons.lang3.StringUtils;
-
-import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem.AlmaItemData;
-
 public class GadgetItem {
-	private int total;
-	private int available;
 	private final String callno;
-	@JsonProperty("img_id")
-	private String imgId;
-	private String note;
 	private final String volume;
 	private final String description;
 	private final List<AlmaItemData> details;
+	private int total;
+	private int available;
+	@JsonProperty("img_id")
+	private String imgId;
+	private String note;
 
 	public GadgetItem(
 			int total,
