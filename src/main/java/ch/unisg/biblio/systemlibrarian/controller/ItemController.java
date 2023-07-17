@@ -4,30 +4,26 @@ import ch.unisg.biblio.systemlibrarian.controller.dtos.GadgetItem;
 import ch.unisg.biblio.systemlibrarian.services.GadgetProviderService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.Locale;
 
 @Controller("/gadgets")
 public class ItemController {
 
 	private final GadgetProviderService gadgetProviderService;
 
-	public ItemController(GadgetProviderService gadgetProviderService) {
+	public ItemController(
+			final GadgetProviderService gadgetProviderService
+	) {
 		this.gadgetProviderService = gadgetProviderService;
 	}
 
-	@Get("/all")
-	public Collection<GadgetItem> all() {
-		return sortGadgetItems(gadgetProviderService.getGadgets());
+	@Get("/{lang}/all")
+	public Collection<GadgetItem> all(
+			final @PathVariable String lang
+	) {
+		return gadgetProviderService.getGadgets(Locale.forLanguageTag(lang));
 	}
-
-	private List<GadgetItem> sortGadgetItems(Collection<GadgetItem> items) {
-		List<GadgetItem> gadgetItems = new ArrayList<>(items);
-		gadgetItems.sort(Comparator.comparing(GadgetItem::getSortKey));
-		return gadgetItems;
-	}
-
 }

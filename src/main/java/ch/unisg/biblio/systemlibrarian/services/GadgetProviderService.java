@@ -11,10 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.invoke.MethodHandles;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -25,7 +22,6 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 	private final ItemFetchService itemFetchService;
 	private final ItemConvertService itemConvertService;
 	private Map<String, AlmaItem> items = Collections.emptyMap();
-	private List<GadgetItem> gadgets = Collections.emptyList();
 
 	@Inject
 	public GadgetProviderService(
@@ -58,17 +54,16 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 				.collect(Collectors.toMap(
 						i -> i.getItemData().getBarcode(),
 						Function.identity()));
-		List<GadgetItem> gadgetItems = itemConvertService.convert(almaItems);
-		this.gadgets = List.copyOf(gadgetItems);
-		return this.gadgets.size();
+		return this.items.size();
 	}
 
 	public Map<String, AlmaItem> getAlmaItems() {
 		return this.items;
 	}
 
-	public List<GadgetItem> getGadgets() {
-		return this.gadgets;
+	public List<GadgetItem> getGadgets(final Locale locale) {
+		final List<GadgetItem> gadgetItems = itemConvertService.convert(List.copyOf(items.values()), locale);
+		return sortGadgetItems(gadgetItems);
 	}
 
 	public void updateAvailability(String barcode, boolean available) {
@@ -82,8 +77,11 @@ public class GadgetProviderService implements ApplicationEventListener<ServerSta
 		// barcode known, update availability
 		item.map(i -> i.updateAvailability(available))
 				.ifPresent(i -> items.put(barcode, i));
-		// convert and sort almaItems
-		List<GadgetItem> gadgetItems = itemConvertService.convert(List.copyOf(items.values()));
-		this.gadgets = List.copyOf(gadgetItems);
+	}
+
+	private List<GadgetItem> sortGadgetItems(final Collection<GadgetItem> items) {
+		List<GadgetItem> gadgetItems = new ArrayList<>(items);
+		gadgetItems.sort(Comparator.comparing(GadgetItem::getSortKey));
+		return gadgetItems;
 	}
 }

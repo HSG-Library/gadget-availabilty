@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 gadgets = {
 	init: function () {
 		console.log('init gadgets')
+		console.log('lang:', this.lang())
 		this.loadGadgets()
 		this.registerSearchToggle()
 		this.registerDescriptionToggle()
@@ -12,7 +13,7 @@ gadgets = {
 
 	loadGadgets: function () {
 		if (util.byClass('.js-load-gadgets').length > 0) {
-			util.get('/gadgets/all', this.onLoadGadgets, this.onLoadGadgetsError)
+			util.get('/gadgets/' + this.lang() + '/all', this.onLoadGadgets, this.onLoadGadgetsError)
 		}
 	},
 
@@ -113,6 +114,10 @@ gadgets = {
 				util.byId(entry.id).classList.remove('hide')
 			}
 		})
+	},
+
+	lang: function () {
+		return document.documentElement.lang
 	}
 }
 

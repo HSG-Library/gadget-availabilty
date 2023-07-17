@@ -47,6 +47,12 @@ public class AlmaItem {
 		@JsonProperty("description")
 		private String description;
 
+		@JsonProperty("statistics_note_1")
+		private String statisticsNote1;
+
+		@JsonProperty("statistics_note_2")
+		private String statisticsNote2;
+
 		public String getAlternativeCallNumber() {
 			return alternativeCallNumber;
 		}
@@ -77,6 +83,14 @@ public class AlmaItem {
 
 		public String getDescription() {
 			return description;
+		}
+
+		public String getStatisticsNote1() {
+			return statisticsNote1;
+		}
+
+		public String getStatisticsNote2() {
+			return statisticsNote2;
 		}
 	}
 
