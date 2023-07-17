@@ -53,7 +53,7 @@ public class SecurityTest {
 
 	@Test
 	public void testGadgetsAnonymous() {
-		var response = client.toBlocking().exchange(HttpRequest.GET("/gadgets/all"));
+		var response = client.toBlocking().exchange(HttpRequest.GET("/gadgets/de/all"));
 		Assertions.assertEquals(HttpStatus.OK, response.status());
 	}
 
