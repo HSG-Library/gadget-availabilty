@@ -125,7 +125,7 @@ item = {
 		const delayMs = Math.floor((delay / 3) * 100)
 		return '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
 			'<div class="info js-info"><h2>' + title + '</h2></div>' +
-			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.jpg);;">' +
+			'<div class="container" style="background-image: url(/assets/img/' + img + '), url(/assets/img/unavailable.jpg);;">' +
 			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
 			'<p class="description js-description"><span class="description-title">' + title + '</span><br>' + description + '</p>' +
 			'<p class="availability">' + available + ' / ' + total + '</p>' +

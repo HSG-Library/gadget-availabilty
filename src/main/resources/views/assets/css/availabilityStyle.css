@@ -9,7 +9,6 @@ header {
 	padding: 10px 20px;
 	display: flex;
 	align-items: flex-start;
-	flex-direction: column;
 }
 
 .logo {
@@ -69,6 +68,18 @@ nav li {
 	margin-left: 15px;
 	font-size: 30px;
 	width: 30px;
+}
+
+.lang-switch {
+	font-weight: 700;
+}
+
+.de .lang-switch.de {
+	display: none;
+}
+
+.en .lang-switch.en {
+	display: none;
 }
 
 @media (min-width: 768px) {

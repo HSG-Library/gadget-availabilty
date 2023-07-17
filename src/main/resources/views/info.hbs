@@ -1,87 +1,64 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{lang}}">
 
 <head>
 	{{>views/partials/head-common-partial}}
-	<title>Gadgets: Info | Bibliothek Universität St.Gallen</title>
+	<title>{{i18n "info.pagetitle"}}</title>
 </head>
 
 <body>
-	<header>
-		<div class="logo">
-			<a href="https://www.unisg.ch/universitaet/bibliothek">
-				<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
-			</a>
-		</div>
-		<nav>
-			<ul>
-				<li>
-					<a class="clickable reload" href="/info" title="reload"><i class="fa fa-fw fa-refresh"
-							aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a class="clickable back" href="/" title="back"><i class="fa fa-arrow-left"
-							aria-hidden="true"></i></a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<main id="info">
-		<h1>Ausleihbedingungen für Kleinmaterialien</h1>
+<header>
+	<div class="logo">
+		<a href="{{i18n "common.bibliolink"}}">
+			<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n "common.hsglibrary"}}">
+		</a>
+	</div>
+	<nav>
 		<ul>
-			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Tagesausleihe: Rückgabe bis Schliessung
-				gleichentags
+			<li class="{{lang}}">
+				<a class="lang-switch de clickable" href="/de/info">
+					DE
+				</a>
+				<a class="lang-switch en clickable" href="/en/info">
+					EN
+				</a>
 			</li>
 			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Mahngebühren für verspätete Rückgabe: 1. und
-				2. Verspätungstag je CHF 5.- / 3. Verspätungstag plus CHF 10.-
+				<a class="clickable reload" href="/{{lang}}/info" title="reload">
+					<i class="fa fa-fw fa-refresh" aria-hidden="true"></i>
+				</a>
 			</li>
 			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Bitte Ladekabel so rasch wie möglich wieder
-				zurückbringen
+				<a class="clickable back" href="/{{lang}}" title="back">
+					<i class="fa fa-arrow-left" aria-hidden="true"></i>
+				</a>
 			</li>
 		</ul>
+	</nav>
+</header>
+<main id="info">
+	<h1>{{i18n "info.title"}}</h1>
+	<ul>
+		<li>
+			<i class="fa fw fa-minus" aria-hidden="true"></i> {{i18n "info.dayloan"}}
+		</li>
+		<li>
+			<i class="fa fw fa-minus" aria-hidden="true"></i> {{i18n "info.reminderfees"}}
+		</li>
+		<li>
+			<i class="fa fw fa-minus" aria-hidden="true"></i> {{i18n "info.returncables"}}
+		</li>
+	</ul>
 
-		<p class="infotext">
-			Vermissen Sie etwas bei unseren Kleinmaterialien? Schreiben Sie es auf unsere
-			<a href="https://de.padlet.com/HSGBibliothek/Ideenwand" title="Ideenwand" target="_blank"
-				rel="noopener">Ideenwand!</a>
-			<br>
-			<br>
-			Bei Fragen oder Anregungen steht Ihnen das Bibliothekspersonal gerne zur Verfügung. <br>
-			<a href="https://www.unisg.ch/de/universitaet/bibliothek/ueberuns/oeffnungszeiten" target="_blank"
-				rel="noopener">Öffnungszeiten der
-				Bibliothek</a>
-		</p>
-
-		<h1>Borrowing regulations for gadgets</h1>
-		<ul>
-			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Day loan: return until closing on the same day
-			</li>
-			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Reminder fees for late return: 1st and 2nd day
-				of delay CHF 5.- each / 3rd day of delay plus CHF 10.-
-			</li>
-			<li>
-				<i class="fa fw fa-minus" aria-hidden="true"></i> Please return charging cables as soon as
-				possible
-			</li>
-		</ul>
-
-		<p class="infotext">
-			Do you miss anything in our gadget selection? Write it on our
-			<a href="https://de.padlet.com/HSGBibliothek/Ideenwand" title="idea wall" target="_blank" rel="noopener">idea
-				wall!</a>
-			<br>
-			<br>
-			If you have any questions or suggestions, the library staff will be happy to help. <br>
-			<a href="https://www.unisg.ch/en/universitaet/bibliothek/ueberuns/oeffnungszeiten" target="_blank"
-				rel="noopener">Library opening hours</a>
-		</p>
-	</main>
-	{{>views/partials/footer-common-partial}}
+	<p class="infotext">
+		{{{i18n "info.ideawall"}}}
+		<br>
+		<br>
+		{{i18n "info.happytohelp"}} <br>
+		{{{i18n "info.openinghours"}}}
+	</p>
+</main>
+{{>views/partials/footer-common-partial}}
 </body>
 
 </html>
