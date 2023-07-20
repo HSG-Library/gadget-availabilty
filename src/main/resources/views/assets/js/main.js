@@ -5,13 +5,16 @@ document.addEventListener('DOMContentLoaded', function () {
 gadgets = {
 	init: function () {
 		console.log('init gadgets')
+		console.log('lang:', this.lang())
 		this.loadGadgets()
 		this.registerSearchToggle()
 		this.registerDescriptionToggle()
 	},
 
 	loadGadgets: function () {
-		util.get('/gadgets/all', this.onLoadGadgets, this.onLoadGadgetsError)
+		if (util.byClass('.js-load-gadgets').length > 0) {
+			util.get('/gadgets/' + this.lang() + '/all', this.onLoadGadgets, this.onLoadGadgetsError)
+		}
 	},
 
 	onLoadGadgets: function () {
@@ -24,11 +27,11 @@ gadgets = {
 			let totalAvailable = 0
 			data.forEach((gadget, idx) => {
 				itemsMarkup += item.getMarkup(
-					gadget.volume,
+					gadget.id,
 					idx,
-					gadget.callno,
+					gadget.title,
 					gadget.img_id,
-					(gadget.note || ''),
+					(gadget.description || ''),
 					gadget.available,
 					gadget.total,
 					gadget.details,
@@ -37,8 +40,8 @@ gadgets = {
 				totalItems += gadget.total
 				searchIndex.push(
 					{
-						id: gadget.volume,
-						txt: gadget.callno.toLowerCase() + ' ' + (gadget.note || '').toLowerCase()
+						id: gadget.id,
+						txt: gadget.title.toLowerCase() + ' ' + (gadget.description || '').toLowerCase()
 					}
 				)
 			})
@@ -60,6 +63,9 @@ gadgets = {
 
 	registerSearchToggle: function () {
 		const searchButton = util.byId('js-search-button')
+		if (!searchButton) {
+			return
+		}
 		searchButton.addEventListener('click', function () {
 			const input = util.byId('js-search-input')
 			input.classList.toggle('active')
@@ -108,25 +114,28 @@ gadgets = {
 				util.byId(entry.id).classList.remove('hide')
 			}
 		})
+	},
+
+	lang: function () {
+		return document.documentElement.lang
 	}
 }
 
 item = {
 	getMarkup: function (id, delay, title, img, description, available, total, details) {
 		let availableClass = 'available'
-		if (available == 0) {
+		if (available === 0) {
 			availableClass = 'notAvailable'
 		}
 		const delayMs = Math.floor((delay / 3) * 100)
-		const markup = '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
+		return '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
 			'<div class="info js-info"><h2>' + title + '</h2></div>' +
-			'<div class="container" style="background-image: url(assets/img/' + img + '), url(assets/img/unavailable.jpg);;">' +
+			'<div class="container" style="background-image: url(/assets/img/' + img + '), url(/assets/img/unavailable.jpg);;">' +
 			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
 			'<p class="description js-description"><span class="description-title">' + title + '</span><br>' + description + '</p>' +
 			'<p class="availability">' + available + ' / ' + total + '</p>' +
 			'</div>' +
 			'</li >'
-		return markup
 	}
 }
 

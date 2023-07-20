@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{lang}}">
 
 <head>
 	{{>views/partials/head-common-partial}}
-	<title>Gadgets | Bibliothek Universität St.Gallen</title>
+	<title>{{i18n "main.pagetitle"}}</title>
 </head>
 
-<body>
+<body class="js-load-gadgets">
 	<header>
 		<div class="logo">
-			<a href="https://www.unisg.ch/universitaet/bibliothek">
-				<img src="assets/img/hsg-logo-de.svg" alt="HSG-Bibliothek">
+			<a href="{{i18n "common.bibliolink"}}">
+				<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n "common.hsglibrary"}}">
 			</a>
 		</div>
 		<nav>
 			<div id="search">
-				<input type="text" placeholder="Suche" id="js-search-input" />
+				<label for="js-search-input" class="hide">{{i18n "common.search"}}</label>
+				<input type="text" placeholder="{{i18n "common.search"}}" id="js-search-input" />
 				<span id="js-search-button" class="clickable search">
 					<i class="fa fa-fw fa-search" aria-hidden="true"></i>
 				</span>
 			</div>
 			<ul>
-				<li><a class="clickable reload" href="/" title="reload"><i class="fa fa-fw fa-refresh" aria-hidden="true"></i></a></li>
-				<li><a class="clickable info" href="/info" title="info"><i class="fa fa-fw fa-info" aria-hidden="true"></i></a></li>
+				<li class="{{lang}}">
+					<a class="lang-switch de clickable" href="/de">
+						DE
+					</a>
+					<a class="lang-switch en clickable" href="/en">
+						EN
+					</a>
+				</li>
+				<li>
+					<a class="clickable reload" href="/{{lang}}" title="reload">
+						<i class="fa fa-fw fa-refresh" aria-hidden="true"></i>
+					</a>
+				</li>
+				<li>
+					<a class="clickable info" href="/{{lang}}/info" title="info">
+						<i class="fa fa-fw fa-info" aria-hidden="true"></i>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -33,9 +50,9 @@
 			<!-- inject items here -->
 		</ul>
 		<div id="js-error" class="error hide">
-			<h2>Fehler</h2>
+			<h2>{{i18n "main.errortitle"}}</h2>
 			<p>
-				Die verfügbaren Gadgets konnten nicht geladen werden. Bitte probieren sie es später nocheinmal.
+				{{i18n "main.errormsg"}}
 			</p>
 		</div>
 	</main>

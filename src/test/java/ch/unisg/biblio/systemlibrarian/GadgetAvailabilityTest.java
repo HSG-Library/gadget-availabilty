@@ -32,7 +32,7 @@ class GadgetAvailabilityTest {
 	}
 
 	@Test
-	void testCrontExpression() {
+	void testCronExpression() {
 		CronExpression cronExpression = CronExpression.create("0 */30 7-21 * * *");
 		System.out.println(cronExpression.getExpression());
 		var timeAfter = LocalDateTime.now().atZone(ZoneId.systemDefault());

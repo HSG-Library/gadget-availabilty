@@ -9,8 +9,8 @@ In the project root directory run
 The runnable jar will be created under `target/`
 
 ## How to deploy
-### Github Workflows
-There are two Github workflows in place:
+### GitHub Workflows
+There are two GitHub workflows in place:
 * On push to `develop`, which builds and deploys the app to the Microsoft Azure DEV environment (https://kleinmaterialien.azurewebsites.net)
 * On push to `main` which builds and deploys the app to the Microsoft Azure PROD environment (https://gadgets.unisg.ch)
 
@@ -41,7 +41,7 @@ Add the following to `launch.json` to run the application in VSCode:
 }
 ```
 
-## Dependecy updates
+## Dependency updates
 ### Update Micronaut
 * Check the current version of Micronaut: [https://micronaut.io/download/](https://micronaut.io/download/)
 * Set the current Version in the `pom.xml` file in `parent > version` and in `properties > micronaut.version`

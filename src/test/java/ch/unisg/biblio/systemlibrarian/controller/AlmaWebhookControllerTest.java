@@ -42,7 +42,7 @@ class AlmaWebhookControllerTest {
 	}
 
 	@Test
-	public void testWebhookChallange() {
+	public void testWebhookChallenge() {
 		MutableHttpRequest<String> webhookChallengeGetRequest = HttpRequest
 				.GET("/alma/webhook?challenge=schwalbenweih");
 		String response = client.toBlocking().retrieve(webhookChallengeGetRequest, String.class);
@@ -51,7 +51,7 @@ class AlmaWebhookControllerTest {
 	}
 
 	@Test
-	public void testRecieveWebhook() {
+	public void testReceiveWebhook() {
 		MutableHttpRequest<String> webhookPostRequest = HttpRequest
 				.POST("/alma/webhook", JSON_BODY)
 				.header("X-Exl-Signature", SIGNATURE);

@@ -14,7 +14,7 @@ import io.micronaut.http.client.annotation.Client;
 public interface AlmaClient {
 
 	@Get("/bibs/{mmsId}/holdings/{holdingId}/items?order_by=none&direction=desc&view=brief")
-	public AlmaItemResponse getItems(
+	AlmaItemResponse getItems(
 			@PathVariable String mmsId,
 			@PathVariable String holdingId,
 			@QueryValue("limit") Integer limit,

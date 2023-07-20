@@ -9,7 +9,6 @@ header {
 	padding: 10px 20px;
 	display: flex;
 	align-items: flex-start;
-	flex-direction: column;
 }
 
 .logo {
@@ -69,6 +68,18 @@ nav li {
 	margin-left: 15px;
 	font-size: 30px;
 	width: 30px;
+}
+
+.lang-switch {
+	font-weight: 700;
+}
+
+.de .lang-switch.de {
+	display: none;
+}
+
+.en .lang-switch.en {
+	display: none;
 }
 
 @media (min-width: 768px) {
@@ -206,9 +217,8 @@ a:hover {
 	font-weight: 300;
 	line-height: 23px;
 	padding: 15px;
-	margin: 10px;
 	opacity: 0;
-	margin-top: -10px;
+	margin: -10px 10px 10px;
 	transition: all 0.2s ease-out;
 }
 
@@ -342,7 +352,6 @@ footer .social {
 	width: 64px;
 	height: 64px;
 	margin: 8px;
-	border: 8px solid #00802f;
 	border-radius: 50%;
 	animation: lading-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 	border-color: #00802f transparent transparent transparent;

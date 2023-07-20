@@ -1,19 +1,19 @@
 package ch.unisg.biblio.systemlibrarian.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ch.unisg.biblio.systemlibrarian.AlmaClientConfig;
 import ch.unisg.biblio.systemlibrarian.clients.AlmaClient;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItem;
 import ch.unisg.biblio.systemlibrarian.clients.models.AlmaItemResponse;
 import jakarta.inject.Singleton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Singleton
 public class ItemFetchService {
 
-	private AlmaClient almaClient;
-	private AlmaClientConfig config;
+	private final AlmaClient almaClient;
+	private final AlmaClientConfig config;
 
 	public ItemFetchService(AlmaClient almaClient, AlmaClientConfig config) {
 		this.almaClient = almaClient;
@@ -22,10 +22,9 @@ public class ItemFetchService {
 
 	public List<AlmaItem> fetchAll() {
 		int currentPage = 1;
-		List<AlmaItem> pages = new ArrayList<>();
-		AlmaItemResponse initalPage = fetch(0);
-		pages.addAll(initalPage.getItems());
-		int totalRecordCount = initalPage.getTotalRecordCount();
+		AlmaItemResponse initialPage = fetch(0);
+		List<AlmaItem> pages = new ArrayList<>(initialPage.getItems());
+		int totalRecordCount = initialPage.getTotalRecordCount();
 
 		while (hasMoreItems(currentPage, totalRecordCount)) {
 			List<AlmaItem> items = fetch(pageOffset(currentPage, totalRecordCount)).getItems();
