@@ -24,7 +24,7 @@ import java.util.Optional;
 
 @Singleton
 @Replaces(HandlebarsViewsRenderer.class)
-public final class CustomHandlebarsViewsRenderer<T> extends HandlebarsViewsRenderer<T> {
+public final class CustomHandlebarsViewsRenderer<T, R extends HttpRequest<?>> extends HandlebarsViewsRenderer<T, R> {
 
 	private final HttpLocaleResolver localeResolver;
 
@@ -45,7 +45,7 @@ public final class CustomHandlebarsViewsRenderer<T> extends HandlebarsViewsRende
 	@Override
 	public Writable render(@NonNull String viewName,
 	                       @Nullable T data,
-	                       @Nullable HttpRequest<?> request) {
+	                       @Nullable R request) {
 		ArgumentUtils.requireNonNull("viewName", viewName);
 		return (writer) -> {
 			String location = viewLocation(viewName);

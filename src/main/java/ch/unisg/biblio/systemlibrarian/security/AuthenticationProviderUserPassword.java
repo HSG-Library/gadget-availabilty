@@ -3,7 +3,6 @@ package ch.unisg.biblio.systemlibrarian.security;
 
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.annotation.Nullable;
-import io.micronaut.http.HttpRequest;
 import io.micronaut.security.authentication.AuthenticationProvider;
 import io.micronaut.security.authentication.AuthenticationRequest;
 import io.micronaut.security.authentication.AuthenticationResponse;
@@ -14,7 +13,7 @@ import reactor.core.publisher.FluxSink;
 
 @ConfigurationProperties("admin")
 @Singleton
-public class AuthenticationProviderUserPassword implements AuthenticationProvider {
+public class AuthenticationProviderUserPassword<T> implements AuthenticationProvider<T> {
 
 	private String username;
 	private String password;
@@ -29,8 +28,8 @@ public class AuthenticationProviderUserPassword implements AuthenticationProvide
 
 	@Override
 	public Publisher<AuthenticationResponse> authenticate(
-			@Nullable HttpRequest<?> httpRequest,
-			AuthenticationRequest<?, ?> authenticationRequest) {
+			@Nullable final T httpRequest,
+			final AuthenticationRequest<?, ?> authenticationRequest) {
 		return Flux.create(emitter -> {
 			if (authenticationRequest.getIdentity().equals(username) &&
 					authenticationRequest.getSecret().equals(this.password)) {
