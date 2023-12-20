@@ -16,9 +16,9 @@ public class ErrorController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private final ViewsRenderer viewsRenderer;
+	private final ViewsRenderer<Map<String, String>, HttpRequest<?>> viewsRenderer;
 
-	public ErrorController(ViewsRenderer viewsRenderer) {
+	public ErrorController(ViewsRenderer<Map<String, String>, HttpRequest<?>> viewsRenderer) {
 		this.viewsRenderer = viewsRenderer;
 	}
 
