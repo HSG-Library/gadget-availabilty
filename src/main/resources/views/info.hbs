@@ -6,11 +6,15 @@
 	<title>{{i18n "info.pagetitle"}}</title>
 </head>
 
-<body>
+<body class="info">
 <header>
 	<div class="logo">
-		<a href="{{i18n "common.bibliolink"}}">
-			<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n "common.hsglibrary"}}">
+		<a href="/{{lang}}">
+			<picture>
+				<source srcset="/assets/img/hsg-logo-{{lang}}.svg" type="image/svg+xml" media="(min-width: 570px)">
+				<source srcset="/assets/img/hsg-logo-small.svg" type="image/svg+xml" media="(max-width: 569px)">
+				<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n " common.hsglibrary"}}">
+			</picture>
 		</a>
 	</div>
 	<nav>
@@ -21,11 +25,6 @@
 				</a>
 				<a class="lang-switch en clickable" href="/en/info">
 					EN
-				</a>
-			</li>
-			<li>
-				<a class="clickable reload" href="/{{lang}}/info" title="reload">
-					<i class="fa fa-fw fa-refresh" aria-hidden="true"></i>
 				</a>
 			</li>
 			<li>
