@@ -47,13 +47,13 @@ public class IndexController {
 	}
 
 	@View("info")
-	@Get("/en/info")
+	@Get("en/info")
 	public HttpResponse<Map<String, Object>> infoEn(final Locale locale) {
 		return HttpResponse.ok(commonInfo(locale));
 	}
 
 	@View("info")
-	@Get("/de/info")
+	@Get("de/info")
 	public HttpResponse<Map<String, Object>> infoDe(final Locale locale) {
 		return HttpResponse.ok(commonInfo(locale));
 	}
