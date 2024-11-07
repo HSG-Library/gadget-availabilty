@@ -2,10 +2,19 @@ micronaut:
   server:
     host: 0.0.0.0
     port: 8080
-    netty:
-      responses:
-        file:
-          cache-seconds: 8640000
+    http-version: HTTP_2_0
+    ssl:
+      enabled: true
+    compression:
+      enabled: true
+      mimeTypes:
+        - text/html
+        - text/xml
+        - text/plain
+        - text/css
+        - application/javascript
+        - application/json
+      min-size: 1024 
   router:
     static-resources:
       default:
