@@ -6,75 +6,25 @@ gadgets = {
 	init: function () {
 		console.log('init gadgets')
 		console.log('lang:', this.lang())
-		this.loadGadgets()
-		this.registerSearchToggle()
+		this.onLoad()
 		this.registerDescriptionToggle()
 	},
 
-	loadGadgets: function () {
-		if (util.byClass('.js-load-gadgets').length > 0) {
-			util.get('/gadgets/' + this.lang() + '/all', this.onLoadGadgets, this.onLoadGadgetsError)
-		}
-	},
-
-	onLoadGadgets: function () {
-		if (this.status >= 200 && this.status < 400) {
-			const list = util.byClass('.js-items').item(0)
-			const data = JSON.parse(this.response)
-			let itemsMarkup = ''
-			let searchIndex = []
-			let totalItems = 0
-			let totalAvailable = 0
-			data.forEach((gadget, idx) => {
-				itemsMarkup += item.getMarkup(
-					gadget.id,
-					idx,
-					gadget.title,
-					gadget.img_id,
-					(gadget.description || ''),
-					gadget.available,
-					gadget.total,
-					gadget.details,
-				)
-				totalAvailable += gadget.available
-				totalItems += gadget.total
-				searchIndex.push(
-					{
-						id: gadget.id,
-						txt: gadget.title.toLowerCase() + ' ' + (gadget.description || '').toLowerCase()
-					}
-				)
+	onLoad: function () {
+		const list = util.byClass('.js-items').item(0)
+		const items = util.byClass('.js-tile');
+		const searchIndex = [];
+		items.forEach((tile, idx) => {
+			tile.style.animationDelay = (idx * 30) + 'ms'
+			const title = tile.querySelector('.js-title').textContent.toLowerCase();
+			const description = tile.querySelector('.js-description-text').textContent.toLowerCase();
+			const txt = title + ' ' + description;
+			searchIndex.push({
+				id: tile.id,
+				txt: txt
 			})
-			console.log("total gadgets:", totalItems)
-			console.log("total available:", totalAvailable)
-			list.innerHTML = itemsMarkup
-			gadgets.initSearch(searchIndex)
-		} else {
-			gadgets.onLoadGadgetsError()
-		}
-		util.hideLoader()
-	},
-
-	onLoadGadgetsError: function () {
-		console.error('Could not load gadgets')
-		util.hideLoader()
-		util.byId('js-error').classList.remove('hide')
-	},
-
-	registerSearchToggle: function () {
-		const searchButton = util.byId('js-search-button')
-		if (!searchButton) {
-			return
-		}
-		searchButton.addEventListener('click', function () {
-			const input = util.byId('js-search-input')
-			input.classList.toggle('active')
-			if (input.classList.contains('active')) {
-				input.focus()
-			} else {
-				input.blur()
-			}
 		})
+		gadgets.initSearch(searchIndex)
 	},
 
 	registerDescriptionToggle: function () {
@@ -121,25 +71,6 @@ gadgets = {
 	}
 }
 
-item = {
-	getMarkup: function (id, delay, title, img, description, available, total, details) {
-		let availableClass = 'available'
-		if (available === 0) {
-			availableClass = 'notAvailable'
-		}
-		const delayMs = Math.floor((delay / 3) * 100)
-		return '<li class="tile initial js-tile ' + availableClass + '" id="' + id + '" style="animation-delay: ' + delayMs + 'ms; ">' +
-			'<div class="info js-info"><h2>' + title + '</h2></div>' +
-			'<div class="container" style="background-image: url(/assets/img/' + img + '), url(/assets/img/unavailable.jpg);;">' +
-			'<pre class="details js-details hide">' + JSON.stringify(details, null, 2) + '</pre>' +
-			'<p class="description js-description"><span class="description-title">' + title + '</span><br>' + description + '</p>' +
-			'<p class="availability">' + available + ' / ' + total + '</p>' +
-			'</div>' +
-			'</li >'
-	}
-}
-
-
 util = {
 	byId: function (id) {
 		return document.getElementById(id)
@@ -147,10 +78,6 @@ util = {
 
 	byClass: function (className) {
 		return document.querySelectorAll(className)
-	},
-
-	hideLoader: function () {
-		util.byId('js-loader').classList.add('hide')
 	},
 
 	get: function (uri, success, error) {

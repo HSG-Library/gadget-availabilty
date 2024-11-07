@@ -1,3 +1,22 @@
+:focus-visible {
+	outline-width: 2px;
+	outline-style: auto;
+	outline-color: rgb(115, 165, 175);
+	outline-offset: 3px;
+	animation-name: outline;
+	animation-duration: 0.1s;
+	animation-timing-function: ease-out;
+}
+
+@keyframes outline {
+	from {
+		outline-offset: 8px;
+	}
+
+	to {
+		outline-offset: 3px;
+	}
+}
 body {
 	font-family: 'Lato', sans-serif;
 	width: auto;
@@ -9,7 +28,7 @@ header {
 	top: 0;
 	z-index: 1;
 	background-color: rgba(255, 255, 255, 0.95);
-	border-bottom: 1px solid #d0d0d0;
+	border-bottom: 1px solid rgb(208, 208, 208);
 	box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.2);
 	padding: 10px 20px;
 	display: flex;
@@ -65,7 +84,7 @@ nav li {
 	font-size: 17px;
 	padding: 0 0 0 10px;
 	border: none;
-	background-color: #d0d0d0;
+	background-color: rgb(208, 208, 208);
 	outline: none;
 	width: 70%;
 	max-width: 400px;
@@ -103,25 +122,25 @@ h1 {
 }
 
 .clickable {
-	color: #282828;
+	color: rgb(40, 40, 40);
 	background-color: transparent;
 	cursor: pointer;
 }
 
 .clickable:hover {
-	color: #00802f;
+	color: rgb(0, 128, 47);
 	background-color: transparent;
 }
 
 a {
-	color: #00802f;
+	color: rgb(0, 128, 47);
 	background-color: transparent;
 	cursor: pointer;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #282828;
+	color: rgb(40, 40, 40);
 	background-color: transparent;
 }
 
@@ -168,8 +187,8 @@ a:hover {
 }
 
 #items .info {
-	color: #fff;
-	background-color: #00802F;
+	color: rgb(255, 255, 255);
+		background-color: rgb(0, 128, 47);
 	padding: 10px;
 	height: 25px;
 	line-height: 23px;
@@ -177,7 +196,7 @@ a:hover {
 
 #items .notAvailable .info {
 	background-color: rgb(163 74 75);
-	color: #fff;
+	color: rgb(255, 255, 255);
 }
 
 #items .container {
@@ -199,10 +218,11 @@ a:hover {
 }
 
 #items .description {
-	background-color: #0A5F2D;
-	color: #fff;
+	background-color: rgb(10, 95, 45);
+		color: rgb(255, 255, 255);
 	font-weight: 300;
 	line-height: 23px;
+	z-index: 10;
 	padding: 15px;
 	opacity: 0;
 	margin: -10px 10px 10px;
@@ -222,24 +242,24 @@ a:hover {
 #items .availability {
 	position: absolute;
 	left: 10px;
-	bottom: 10px;
-	color: #fff;
+	top: 10px;
+		color: rgb(255, 255, 255);
 	font-weight: 300;
 	font-size: 31px;
-	background-color: #00802F;
+	background-color: rgb(0, 128, 47);
 	width: fit-content;
 	padding: 5px;
 }
 
 #items .notAvailable .availability {
-	background-color: rgb(163 74 75);
-	color: #fff;
+	background-color: rgb(163, 74, 75);
+		color: rgb(255, 255, 255);
 }
 
 #items .details {
 	position: absolute;
 	font-family: Monaco, monospace;
-	background-color: #FFF04B;
+	background-color: rgb(255, 64, 75);
 	font-size: 7px;
 	padding: 10px;
 	overflow: scroll;
@@ -265,24 +285,23 @@ footer address {
 footer .social {
 	margin-bottom: 40px;
 }
-
 .alma {
 	font-weight: 300;
 	font-size: 8px;
-	color: #d0d0d0;
+	color: rgb(208, 208, 208);
 }
 
 .alma a {
 	font-weight: 300;
 	font-size: 8px;
-	color: #d0d0d0;
+	color: rgb(208, 208, 208);
 }
 
 .error {
 	padding: 10px;
 	font-weight: 300;
-	background-color: rgb(163 74 75);
-	color: #fff;
+	background-color: rgb(163, 74, 75);
+		color: rgb(255, 255, 255);
 }
 
 .error h2 {
@@ -323,48 +342,6 @@ footer .social {
 
 #info a {
 	text-decoration: underline;
-}
-
-/* Loader from: https://loading.io/css/ */
-.lading-animation {
-	display: inline-block;
-	position: relative;
-	width: 80px;
-	height: 80px;
-}
-
-.lading-animation div {
-	box-sizing: border-box;
-	display: block;
-	position: absolute;
-	width: 64px;
-	height: 64px;
-	margin: 8px;
-	border-radius: 50%;
-	animation: lading-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-	border-color: #00802f transparent transparent transparent;
-}
-
-.lading-animation div:nth-child(1) {
-	animation-delay: -0.45s;
-}
-
-.lading-animation div:nth-child(2) {
-	animation-delay: -0.3s;
-}
-
-.lading-animation div:nth-child(3) {
-	animation-delay: -0.15s;
-}
-
-@keyframes lading-animation {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(360deg);
-	}
 }
 
 /* Desktop version */
