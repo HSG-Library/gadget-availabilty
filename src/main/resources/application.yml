@@ -5,6 +5,7 @@ micronaut:
     http-version: HTTP_2_0
     ssl:
       enabled: true
+      port: 8443
     compression:
       enabled: true
       mimeTypes:
