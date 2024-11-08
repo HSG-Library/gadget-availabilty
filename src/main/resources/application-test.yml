@@ -1,9 +1,7 @@
 micronaut:
   server:
     port: 8888
-    ssl:
-      enabled: false
-
+ 
 mockito:
   test:
     enabled
