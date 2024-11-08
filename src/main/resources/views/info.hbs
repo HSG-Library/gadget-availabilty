@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="{{common.lang}}">
 
 <head>
 	{{>views/partials/head-common-partial}}
 	<title>{{i18n "info.pagetitle"}}</title>
 </head>
 
-<body>
+<body class="info">
 <header>
 	<div class="logo">
-		<a href="{{i18n "common.bibliolink"}}">
-			<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n "common.hsglibrary"}}">
+		<a href="/{{common.lang}}">
+			<picture>
+				<source srcset="/assets/img/hsg-logo-{{common.lang}}.svg" type="image/svg+xml" media="(min-width: 570px)">
+				<source srcset="/assets/img/hsg-logo-small.svg" type="image/svg+xml" media="(max-width: 569px)">
+				<img src="/assets/img/hsg-logo-{{common.lang}}.svg" alt="{{i18n " common.hsglibrary"}}">
+			</picture>
 		</a>
 	</div>
 	<nav>
 		<ul>
-			<li class="{{lang}}">
+			<li class="{{common.lang}}">
 				<a class="lang-switch de clickable" href="/de/info">
 					DE
 				</a>
@@ -24,12 +28,7 @@
 				</a>
 			</li>
 			<li>
-				<a class="clickable reload" href="/{{lang}}/info" title="reload">
-					<i class="fa fa-fw fa-refresh" aria-hidden="true"></i>
-				</a>
-			</li>
-			<li>
-				<a class="clickable back" href="/{{lang}}" title="back">
+				<a class="clickable back" href="/{{common.lang}}" title="back">
 					<i class="fa fa-arrow-left" aria-hidden="true"></i>
 				</a>
 			</li>

@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="{{common.lang}}">
 
 <head>
 	{{>views/partials/head-common-partial}}
 	<title>{{i18n "main.pagetitle"}}</title>
 </head>
 
-<body class="js-load-gadgets">
+<body class="main js-load-gadgets">
 	<header>
 		<div class="logo">
-			<a href="{{i18n "common.bibliolink"}}">
-				<img src="/assets/img/hsg-logo-{{lang}}.svg" alt="{{i18n "common.hsglibrary"}}">
+			<a href="/{{common.lang}}">
+				<picture>
+					<source srcset="/assets/img/hsg-logo-{{common.lang}}.svg" type="image/svg+xml" media="(min-width: 769px)" width="197"
+						height="41">
+					<source srcset="/assets/img/hsg-logo-small.svg" type="image/svg+xml" media="(max-width: 768px)" width="90" height="100">
+					<img src="/assets/img/hsg-logo-{{common.lang}}.svg" alt={{i18n "common.hsglibrary" }}>
+				</picture>
 			</a>
 		</div>
 		<nav>
 			<div id="search">
 				<label for="js-search-input" class="hide">{{i18n "common.search"}}</label>
 				<input type="text" placeholder="{{i18n "common.search"}}" id="js-search-input" />
-				<span id="js-search-button" class="clickable search">
+				<span id="js-search-button" class="search">
 					<i class="fa fa-fw fa-search" aria-hidden="true"></i>
 				</span>
 			</div>
 			<ul>
-				<li class="{{lang}}">
+				<li class="{{common.lang}}">
 					<a class="lang-switch de clickable" href="/de">
 						DE
 					</a>
@@ -31,12 +36,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="clickable reload" href="/{{lang}}" title="reload">
-						<i class="fa fa-fw fa-refresh" aria-hidden="true"></i>
-					</a>
-				</li>
-				<li>
-					<a class="clickable info" href="/{{lang}}/info" title="info">
+					<a class="clickable info" href="/{{common.lang}}/info" title="info">
 						<i class="fa fa-fw fa-info" aria-hidden="true"></i>
 					</a>
 				</li>
@@ -45,9 +45,23 @@
 	</header>
 	<main>
 		<h1 class="visuallyHidden" aria-label="Gadgets">Gadgets</h1>
-		{{>views/partials/loader-partial}}
 		<ul id="items" class="js-items">
 			<!-- inject items here -->
+			{{#each gadgets.all}}
+			<li tabindex="0" title="{{this.title}}; {{this.available}} / {{this.total}}"
+				class="tile initial js-tile {{#if this.available}}available{{else}}notAvailable{{/if}}" id="{{id}}">
+				<div class="info js-info">
+					<h2 class="js-title">{{this.title}}</h2>
+				</div>
+				<div class="container" style="background-image: url(/assets/img/{{this.imgId}}), url(/assets/img/unavailable.jpg);">
+					<pre class="details js-details hide">{{{this.detailsJson}}}</pre>
+					<p class="description js-description"><span class="description-title">{{this.title}}</span><br><span
+							class="js-description-text">{{this.description}}</span>
+					</p>
+					<p class="availability">{{this.available}} / {{this.total}}</p>
+				</div>
+			</li>
+			{{/each}}
 		</ul>
 		<div id="js-error" class="error hide">
 			<h2>{{i18n "main.errortitle"}}</h2>
