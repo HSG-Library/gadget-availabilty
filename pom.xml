@@ -24,8 +24,9 @@
 		<maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
 		<maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
 		<maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
-		<jdk.version>17</jdk.version>
-		<release.version>17</release.version>
+		<maven-git-commit-plugin.version>4.0.5</maven-git-commit-plugin.version>
+		<jdk.version>21</jdk.version>
+		<release.version>21</release.version>
 	</properties>
 
 	<repositories>
@@ -92,6 +93,10 @@
 			<groupId>io.micronaut.views</groupId>
 			<artifactId>micronaut-views-handlebars</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.micronaut</groupId>
+			<artifactId>micronaut-management</artifactId>
+		</dependency>
 		<!-- logging -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -154,6 +159,23 @@
 						<arg>-Amicronaut.processing.group=ch.unisg.biblio.systemlibrarian</arg>
 						<arg>-Amicronaut.processing.module=gadget-availabilty</arg>
 					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>${maven-git-commit-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>get-the-git-infos</id>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+						<phase>compile</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
 				</configuration>
 			</plugin>
 			<plugin>

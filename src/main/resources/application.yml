@@ -27,6 +27,14 @@ micronaut:
     client:
       read-timeout: 30s
 
+endpoints:
+  info:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    sensitive: false
+
 alma-api:
   url: https://api-eu.hosted.exlibrisgroup.com/almaws/v1/
   mmsId: 994889360105506
