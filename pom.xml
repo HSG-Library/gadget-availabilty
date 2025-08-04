@@ -4,27 +4,26 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.unisg.biblio.systemlibrarian</groupId>
 	<artifactId>gadget-availability</artifactId>
-	<version>1.4.0</version>
+	<version>1.4.1</version>
 	<packaging>${packaging}</packaging>
 
 	<parent>
 		<groupId>io.micronaut.platform</groupId>
 		<artifactId>micronaut-parent</artifactId>
-		<version>4.7.6</version>
+		<version>4.9.2</version>
 	</parent>
 
 	<properties>
 		<packaging>jar</packaging>
 		<exec.mainClass>ch.unisg.biblio.systemlibrarian.Application</exec.mainClass>
 		<micronaut.runtime>netty</micronaut.runtime>
-		<micronaut.version>4.7.6</micronaut.version>
-		<apacheCommonsLang3.version>3.17.0</apacheCommonsLang3.version>
+		<micronaut.version>4.9.2</micronaut.version>
+		<apacheCommonsLang3.version>3.18.0</apacheCommonsLang3.version>
 		<bouncycastleBcpkix.version>1.70</bouncycastleBcpkix.version>
 		<maven.versions.plugin.version>2.18.0</maven.versions.plugin.version>
-		<maven.enforcer.plugin.version>3.5.0</maven.enforcer.plugin.version>
-		<maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
 		<maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
-		<maven-git-commit-plugin.version>4.0.5</maven-git-commit-plugin.version>
+		<maven-git-commit-plugin.version>4.9.10</maven-git-commit-plugin.version>
 		<jdk.version>21</jdk.version>
 		<release.version>21</release.version>
 	</properties>
@@ -191,26 +190,6 @@
 						<goals>
 							<goal>display-property-updates</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>${maven.enforcer.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.6</version>
-								</requireMavenVersion>
-							</rules>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
